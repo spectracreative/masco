@@ -14,7 +14,7 @@ const Hero = () => {
 
     return {
       category: cat,
-      image: `/images/products/${name}.png`,
+      image: `/images/categories/${name}.png`,
       title: `PREMIUM ${cat.toUpperCase()}`,
       desc: `Taste the absolute best quality ${cat.toLowerCase()} hand-selected for you.`
     };

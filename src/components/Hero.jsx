@@ -34,7 +34,7 @@ const Hero = () => {
   }, [slides.length]);
 
   return (
-    <section className="hero-slider-section" style={{ background: '#fafafa', position: 'relative', overflow: 'hidden' }}>
+    <section className="hero-slider-section" style={{ position: 'relative', overflow: 'hidden' }}>
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
@@ -45,17 +45,17 @@ const Hero = () => {
           transition={{ duration: 1 }}
           style={{ 
             backgroundImage: `url(${slides[currentIndex].image})`,
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'right center',
-            opacity: 0.2 // Make the background subtle so it doesn't clash with text
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            position: 'absolute',
+            top: 0, left: 0, right: 0, bottom: 0
           }}
         >
-          <div className="hero-slide-overlay" style={{ background: 'linear-gradient(to right, rgba(255,255,255,1) 30%, rgba(255,255,255,0) 100%)' }}></div>
+          <div className="hero-slide-overlay" style={{ background: 'rgba(0,0,0,0.6)', width: '100%', height: '100%' }}></div>
         </motion.div>
       </AnimatePresence>
 
-      <div className="hero-slider-content" style={{ zIndex: 10 }}>
+      <div className="hero-slider-content" style={{ zIndex: 10, position: 'relative' }}>
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
@@ -71,7 +71,6 @@ const Hero = () => {
           >
             <motion.h1 
               className="hero-slider-title"
-              style={{ color: 'var(--primary-dark)' }}
               variants={{
                 hidden: { opacity: 0, x: -50 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -82,7 +81,6 @@ const Hero = () => {
             </motion.h1>
             <motion.p 
               className="hero-slider-desc"
-              style={{ color: '#555' }}
               variants={{
                 hidden: { opacity: 0, x: -50 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },

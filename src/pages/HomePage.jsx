@@ -36,7 +36,7 @@ const HomePage = () => {
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     className="category-card"
-                    style={{ backgroundImage: `url(${bgImg})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundColor: '#fff' }}
+                    style={{ backgroundImage: `url(${bgImg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundColor: '#fff' }}
                   >
                     <div className="category-card-content">
                       <h3 style={{ textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>{cat}</h3>

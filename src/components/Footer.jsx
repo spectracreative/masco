@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -6,10 +7,10 @@ const Footer = () => {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
-              <img src="/logo.png" alt="Baja Logo" style={{ height: '60px', filter: 'brightness(0) invert(1)' }} />
-              <img src="/logo2.png" alt="Ezwah Logo" style={{ height: '50px' }} />
-            </div>
+            <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
+              <img src="/images/logo.png" alt="Baja Logo" style={{ height: '60px', filter: 'brightness(0) invert(1)' }} />
+              <img src="/images/logo2.png" alt="Ezwah Logo" style={{ height: '50px' }} />
+            </Link>
             <p>Ezwah is the pioneer in making and packing the highest quality nuts, coffee, tea, and dried fruits. A self-made achievement built on passion.</p>
           </div>
           

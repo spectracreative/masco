@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { categories } from '../data/products';
 
 const Hero = () => {
-  const slides = [
-    {
-      image: '/images/prod_coffee.png',
-      title: 'TURKISH COFFEE',
-      desc: 'Roasted ground coffee beans'
-    },
-    {
-      image: '/images/prod_nuts.png',
-      title: 'PREMIUM NUTS',
-      desc: 'Freshly roasted nuts with a touch of salt flavor'
-    },
-    {
-      image: '/images/hero.png',
-      title: 'EZWAH QUALITY',
-      desc: 'Taste the essence of perfection'
-    }
-  ];
+  const navigate = useNavigate();
+
+  const slides = categories.map((cat) => {
+    let name = cat.toLowerCase();
+    if (cat === "Sunflower Seed") name = "sunflower-seed/sunflower";
+    else if (cat === "Pumpkin Seed") name = "pumpkin-seed/pumpkin";
+    else name = `${name}/${name}`;
+
+    return {
+      category: cat,
+      image: `/images/products/${name}.png`,
+      title: `PREMIUM ${cat.toUpperCase()}`,
+      desc: `Taste the absolute best quality ${cat.toLowerCase()} hand-selected for you.`
+    };
+  });
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -27,19 +26,15 @@ const Hero = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
-  };
-
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 5000); // Change image every 5 seconds
+    }, 5000);
     return () => clearInterval(interval);
   }, [slides.length]);
 
   return (
-    <section className="hero-slider-section">
+    <section className="hero-slider-section" style={{ background: '#fafafa', position: 'relative', overflow: 'hidden' }}>
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
@@ -48,13 +43,19 @@ const Hero = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
-          style={{ backgroundImage: `url(${slides[currentIndex].image})` }}
+          style={{ 
+            backgroundImage: `url(${slides[currentIndex].image})`,
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'right center',
+            opacity: 0.2 // Make the background subtle so it doesn't clash with text
+          }}
         >
-          <div className="hero-slide-overlay"></div>
+          <div className="hero-slide-overlay" style={{ background: 'linear-gradient(to right, rgba(255,255,255,1) 30%, rgba(255,255,255,0) 100%)' }}></div>
         </motion.div>
       </AnimatePresence>
 
-      <div className="hero-slider-content">
+      <div className="hero-slider-content" style={{ zIndex: 10 }}>
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
@@ -70,6 +71,7 @@ const Hero = () => {
           >
             <motion.h1 
               className="hero-slider-title"
+              style={{ color: 'var(--primary-dark)' }}
               variants={{
                 hidden: { opacity: 0, x: -50 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -80,6 +82,7 @@ const Hero = () => {
             </motion.h1>
             <motion.p 
               className="hero-slider-desc"
+              style={{ color: '#555' }}
               variants={{
                 hidden: { opacity: 0, x: -50 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -90,29 +93,17 @@ const Hero = () => {
             </motion.p>
             <motion.button 
               className="hero-slider-btn"
+              onClick={() => navigate(`/products/${encodeURIComponent(slides[currentIndex].category)}`)}
               variants={{
                 hidden: { opacity: 0, x: -50 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
                 exit: { opacity: 0, x: 50, transition: { duration: 0.4 } }
               }}
             >
-              View Products
+              View {slides[currentIndex].category}
             </motion.button>
           </motion.div>
         </AnimatePresence>
-      </div>
-
-      <button className="slider-nav-btn slider-prev" onClick={prevSlide} aria-label="Previous Slide">
-        <ChevronLeft size={24} />
-      </button>
-      <button className="slider-nav-btn slider-next" onClick={nextSlide} aria-label="Next Slide">
-        <ChevronRight size={24} />
-      </button>
-
-      <div className="custom-shape-divider">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M0,120 L1200,120 L1200,0 L650,0 Q600,0 600,120 Q600,0 550,0 L0,0 Z" className="shape-fill" />
-        </svg>
       </div>
     </section>
   );

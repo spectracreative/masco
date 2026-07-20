@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { allProducts } from '../data/products';
 import { ShoppingBag, ArrowLeft } from 'lucide-react';
@@ -66,6 +66,13 @@ const ProductDetailsPage = () => {
                   <Link to={`/product/${prod.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                     <div className="product-img-box">
                       <img src={prod.img} alt={prod.name} className="product-img-no-frame" />
+                      <button className="product-add-overlay" aria-label="Add to cart" onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        addToCart(prod);
+                      }}>
+                        <ShoppingBag size={20} />
+                      </button>
                     </div>
                     <div className="product-info">
                       <h3 className="product-title-medium">{prod.name}</h3>

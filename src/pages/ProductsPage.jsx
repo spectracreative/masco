@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { allProducts, categories } from '../data/products';
@@ -49,13 +49,7 @@ const ProductsPage = () => {
                     <Link to={`/product/${prod.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                       <div className="product-img-box">
                         <img src={prod.img} alt={prod.name} className="product-img-no-frame" />
-                        <button className="product-add-overlay" aria-label="Add to cart" onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          addToCart(prod);
-                        }}>
-                          <ShoppingBag size={20} />
-                        </button>
+
                       </div>
                       
                       <div className="product-info">

@@ -74,11 +74,7 @@ const Header = () => {
             </button>
           )}
           
-          <button className="cart-btn" aria-label="Cart" onClick={toggleCart}>
-            <ShoppingBag size={20} />
-            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-          </button>
-          
+
           <button className="icon-btn d-md-none" aria-label="Menu" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             <Menu size={24} />
           </button>

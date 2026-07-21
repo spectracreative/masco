@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, ArrowRight } from 'lucide-react';
 
@@ -72,9 +72,7 @@ const Products = () => {
                 
                 <div className="product-img-box">
                   <img src={prod.img} alt={prod.name} />
-                  <button className="product-add-overlay" aria-label="Add to cart">
-                    <ShoppingBag size={20} />
-                  </button>
+
                 </div>
                 
                 <div className="product-info">

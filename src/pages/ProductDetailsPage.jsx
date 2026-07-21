@@ -51,9 +51,7 @@ const ProductDetailsPage = () => {
               {product.description || "Premium quality product carefully selected and roasted for the perfect taste."}
             </p>
             
-            <button className="btn" onClick={() => addToCart(product)} style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', alignSelf: 'flex-start' }}>
-              <ShoppingBag size={20} /> Add to Cart
-            </button>
+
           </div>
         </div>
 
@@ -66,13 +64,7 @@ const ProductDetailsPage = () => {
                   <Link to={`/product/${prod.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                     <div className="product-img-box">
                       <img src={prod.img} alt={prod.name} className="product-img-no-frame" />
-                      <button className="product-add-overlay" aria-label="Add to cart" onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        addToCart(prod);
-                      }}>
-                        <ShoppingBag size={20} />
-                      </button>
+
                     </div>
                     <div className="product-info">
                       <h3 className="product-title-medium">{prod.name}</h3>

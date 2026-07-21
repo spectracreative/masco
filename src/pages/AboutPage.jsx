@@ -6,7 +6,7 @@ const AboutPage = () => {
     <main className="page-wrapper">
       <div className="page-header" style={{ background: 'var(--primary)', color: 'white', padding: '140px 0 60px 0', textAlign: 'center' }}>
         <div className="container">
-          <h1 style={{ fontSize: '3.5rem', marginBottom: '15px' }}>About Ezwah</h1>
+          <h1 style={{ fontSize: '3.5rem', marginBottom: '15px' }}>About <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo white" /></h1>
           <p style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}>A legacy of quality and passion.</p>
         </div>
       </div>
@@ -21,10 +21,10 @@ const AboutPage = () => {
           >
             <h2 style={{ fontSize: '2.5rem', color: 'var(--primary-dark)', marginBottom: '20px' }}>Our Story</h2>
             <p style={{ lineHeight: '1.8', color: '#555', marginBottom: '20px' }}>
-              Founded with a passion for quality and authenticity, Ezwah has grown from a humble beginning into a premier provider of the finest nuts, seeds, and roasted delicacies. We traverse the globe to source raw ingredients from the most pristine environments.
+              Founded with a passion for quality and authenticity, <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" /> has grown from a humble beginning into a premier provider of the finest nuts, seeds, and roasted delicacies. We traverse the globe to source raw ingredients from the most pristine environments.
             </p>
             <p style={{ lineHeight: '1.8', color: '#555' }}>
-              Our unique roasting process honors traditional methods while employing modern quality control, ensuring that every bite delivers an unforgettable crunch and rich flavor. Ezwah is more than a brand; it's a commitment to excellence.
+              Our unique roasting process honors traditional methods while employing modern quality control, ensuring that every bite delivers an unforgettable crunch and rich flavor. <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" /> is more than a brand; it's a commitment to excellence.
             </p>
           </motion.div>
 

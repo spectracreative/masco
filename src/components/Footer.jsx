@@ -11,7 +11,7 @@ const Footer = () => {
               <img src="/images/logo.png" alt="Baja Logo" style={{ height: '60px', filter: 'brightness(0) invert(1)' }} />
               <img src="/images/logo2.png" alt="Ezwah Logo" style={{ height: '50px' }} />
             </Link>
-            <p>Ezwah is the pioneer in making and packing the highest quality nuts, coffee, tea, and dried fruits. A self-made achievement built on passion.</p>
+            <p><img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo white" /> is the pioneer in making and packing the highest quality nuts, coffee, tea, and dried fruits. A self-made achievement built on passion.</p>
           </div>
           
           <div>
@@ -45,7 +45,7 @@ const Footer = () => {
         </div>
         
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} Ezwah Trading. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo white" /> Trading. All rights reserved.</p>
         </div>
       </div>
     </footer>

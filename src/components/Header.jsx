@@ -33,8 +33,11 @@ const Header = () => {
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
       <div className="container header-container">
         <div className="logo">
-          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-            <img src="/images/logo.png" alt="Baja Logo" />
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '15px', textDecoration: 'none' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', color: 'white', fontWeight: 'normal', fontSize: '1.2rem', lineHeight: '1.1', textAlign: 'right' }}>
+              <span>Why</span>
+              <span>choose</span>
+            </div>
             <img src="/images/logo2.png" alt="Ezwah Logo" style={{ filter: 'none' }} />
           </Link>
         </div>

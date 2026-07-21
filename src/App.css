@@ -267,7 +267,6 @@
 .feature-card:hover {
   background: white;
   border-color: var(--border-color);
-  box-shadow: var(--shadow-lg);
   transform: translateY(-10px);
 }
 .feature-image-wrapper {
@@ -290,7 +289,6 @@
 }
 .feature-card:hover .feature-image-wrapper {
   transform: scale(1.05);
-  box-shadow: var(--shadow-md);
   border-color: var(--border-color);
 }
 .feature-card:hover .feature-image {
@@ -654,3 +652,21 @@
     padding: 8px 10px !important;
   }
 }
+
+.ezwah-inline-logo {
+  height: 2.1em;
+  width: auto;
+  vertical-align: middle;
+  margin: 0 0.1em;
+  display: inline-block;
+  transform: translateY(-0.18em);
+}
+
+.ezwah-inline-logo.red {
+  filter: brightness(0) invert(16%) sepia(91%) saturate(5796%) hue-rotate(349deg) brightness(96%) contrast(100%);
+}
+
+.ezwah-inline-logo.white {
+  filter: brightness(0) invert(1);
+}
+

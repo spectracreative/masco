@@ -1,8 +1,30 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useEffect } from 'react';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { ShieldCheck, Leaf, Coffee, Award } from 'lucide-react';
 
 const Features = () => {
+  const sectionRef = useRef(null);
+  
+  // Scroll Parallax
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const scrollY1 = useTransform(scrollYProgress, [0, 1], [150, -150]);
+  const scrollY2 = useTransform(scrollYProgress, [0, 1], [180, -180]);
+  const scrollY3 = useTransform(scrollYProgress, [0, 1], [220, -220]);
+  const scrollY4 = useTransform(scrollYProgress, [0, 1], [120, -120]);
+  const scrollY5 = useTransform(scrollYProgress, [0, 1], [160, -160]);
+  const scrollY6 = useTransform(scrollYProgress, [0, 1], [200, -200]);
+  
+  const rotate1 = useTransform(scrollYProgress, [0, 1], [-15, 15]);
+  const rotate2 = useTransform(scrollYProgress, [0, 1], [15, -15]);
+  const rotate3 = useTransform(scrollYProgress, [0, 1], [-20, 20]);
+  const rotate4 = useTransform(scrollYProgress, [0, 1], [20, -20]);
+  const rotate5 = useTransform(scrollYProgress, [0, 1], [-25, 25]);
+  const rotate6 = useTransform(scrollYProgress, [0, 1], [30, -30]);
+
   const features = [
     { id: 1, image: "/images/feature_premium.png", title: "Premium Selection", desc: "We hand-select only the highest grade nuts and beans from trusted farms worldwide." },
     { id: 2, image: "/images/feature_natural.png", title: "100% Natural", desc: "No artificial flavors or preservatives. Just pure, natural goodness in every bite." },
@@ -11,22 +33,67 @@ const Features = () => {
   ];
 
   return (
-    <section className="section features-section">
-      <div className="container">
+    <section className="section features-section" ref={sectionRef} style={{ overflow: 'hidden', position: 'relative' }}>
+      
+      {/* Decorative Background Elements */}
+      <motion.div style={{ position: 'absolute', top: '10%', left: '8%', zIndex: 0, y: scrollY1, rotate: rotate1, pointerEvents: 'none' }}>
+        <img 
+          src="/images/nut/hazelnut.png" alt="" 
+          style={{ width: '80px', opacity: 0.9, mixBlendMode: 'multiply' }}
+        />
+      </motion.div>
+
+      <motion.div style={{ position: 'absolute', top: '5%', right: '10%', zIndex: 0, y: scrollY2, rotate: rotate2, pointerEvents: 'none' }}>
+        <img 
+          src="/images/nut/cashew.png" alt="" 
+          style={{ width: '90px', opacity: 0.9, mixBlendMode: 'multiply' }}
+        />
+      </motion.div>
+
+      <motion.div style={{ position: 'absolute', top: '25%', left: '15%', zIndex: 0, y: scrollY3, rotate: rotate3, pointerEvents: 'none' }}>
+        <img 
+          src="/images/nut/almond.png" alt="" 
+          style={{ width: '100px', opacity: 0.9, mixBlendMode: 'multiply' }}
+        />
+      </motion.div>
+
+      <motion.div style={{ position: 'absolute', top: '30%', right: '12%', zIndex: 0, y: scrollY4, rotate: rotate4, pointerEvents: 'none' }}>
+        <img 
+          src="/images/nut/pistachio.png" alt="" 
+          style={{ width: '85px', opacity: 0.9, mixBlendMode: 'multiply' }}
+        />
+      </motion.div>
+
+      {/* Duplicates */}
+      <motion.div style={{ position: 'absolute', top: '45%', left: '5%', zIndex: 0, y: scrollY5, rotate: rotate5, pointerEvents: 'none' }}>
+        <img 
+          src="/images/nut/cashew.png" alt="" 
+          style={{ width: '95px', opacity: 0.8, mixBlendMode: 'multiply', transform: 'scaleX(-1)' }}
+        />
+      </motion.div>
+
+      <motion.div style={{ position: 'absolute', top: '40%', right: '7%', zIndex: 0, y: scrollY6, rotate: rotate6, pointerEvents: 'none' }}>
+        <img 
+          src="/images/nut/almond.png" alt="" 
+          style={{ width: '90px', opacity: 0.8, mixBlendMode: 'multiply', transform: 'scaleY(-1)' }}
+        />
+      </motion.div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="title-section">
-          <span className="subtitle">The Ezwah Promise</span>
-          <h2>Why Choose Ezwah</h2>
-          <p>We believe in delivering nothing but excellence. Every product that bears the Ezwah name represents our commitment to quality, freshness, and authentic taste.</p>
+          <span className="subtitle">The <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" /> Promise</span>
+          <h2 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>Why Choose <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" style={{ transform: 'none', margin: 0 }} /></h2>
+          <p>We believe in delivering nothing but excellence. Every product that bears the <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" /> name represents our commitment to quality, freshness, and authentic taste.</p>
         </div>
         
         <div className="grid-4">
           {features.map((feature, index) => (
             <motion.div 
               key={feature.id}
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.4 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
               className="feature-card"
             >
               <div className="feature-image-wrapper">

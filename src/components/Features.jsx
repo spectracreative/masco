@@ -1,109 +1,179 @@
-import React, { useRef, useEffect } from 'react';
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { ShieldCheck, Leaf, Coffee, Award } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Features = () => {
-  const sectionRef = useRef(null);
+  const containerRef = useRef(null);
   
-  // Scroll Parallax
   const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
+    target: containerRef,
+    offset: ["start start", "end end"]
   });
 
-  const scrollY1 = useTransform(scrollYProgress, [0, 1], [150, -150]);
-  const scrollY2 = useTransform(scrollYProgress, [0, 1], [180, -180]);
-  const scrollY3 = useTransform(scrollYProgress, [0, 1], [220, -220]);
-  const scrollY4 = useTransform(scrollYProgress, [0, 1], [120, -120]);
-  const scrollY5 = useTransform(scrollYProgress, [0, 1], [160, -160]);
-  const scrollY6 = useTransform(scrollYProgress, [0, 1], [200, -200]);
-  
-  const rotate1 = useTransform(scrollYProgress, [0, 1], [-15, 15]);
-  const rotate2 = useTransform(scrollYProgress, [0, 1], [15, -15]);
-  const rotate3 = useTransform(scrollYProgress, [0, 1], [-20, 20]);
-  const rotate4 = useTransform(scrollYProgress, [0, 1], [20, -20]);
-  const rotate5 = useTransform(scrollYProgress, [0, 1], [-25, 25]);
-  const rotate6 = useTransform(scrollYProgress, [0, 1], [30, -30]);
+  // Scene 0: Intro Title (0 to 0.15)
+  const introY1 = useTransform(scrollYProgress, [0, 0.03, 0.09], [0, 0, -100], { clamp: true });
+  const introOpacity1 = useTransform(scrollYProgress, [0, 0.03, 0.09], [1, 1, 0], { clamp: true });
 
-  const features = [
-    { id: 1, image: "/images/feature_premium.png", title: "Premium Selection", desc: "We hand-select only the highest grade nuts and beans from trusted farms worldwide." },
-    { id: 2, image: "/images/feature_natural.png", title: "100% Natural", desc: "No artificial flavors or preservatives. Just pure, natural goodness in every bite." },
-    { id: 3, image: "/images/feature_roasted.png", title: "Freshly Roasted", desc: "Our premium nuts and seeds are roasted to order, ensuring maximum flavor and crunch." },
-    { id: 4, image: "/images/feature_quality.png", title: "Quality Assured", desc: "Rigorous quality control processes guarantee perfection in every package we deliver." },
-  ];
+  const introY2 = useTransform(scrollYProgress, [0, 0.06, 0.12], [0, 0, -100], { clamp: true });
+  const introOpacity2 = useTransform(scrollYProgress, [0, 0.06, 0.12], [1, 1, 0], { clamp: true });
+
+  const introY3 = useTransform(scrollYProgress, [0, 0.09, 0.15], [0, 0, -100], { clamp: true });
+  const introOpacity3 = useTransform(scrollYProgress, [0, 0.09, 0.15], [1, 1, 0], { clamp: true });
+
+  const introDisplay = useTransform(scrollYProgress, [0, 0.15, 0.16], ["flex", "flex", "none"]);
+
+  // Scene 1: Premium Selection (0.15 to 0.4)
+  const scene1Opacity = useTransform(scrollYProgress, [0.15, 0.2, 0.35, 0.4], [0, 1, 1, 0], { clamp: true });
+  const scene1Scale = useTransform(scrollYProgress, [0.15, 0.4], [0.95, 1.05], { clamp: true });
+  const scene1Display = useTransform(scrollYProgress, [0.14, 0.15, 0.4, 0.41], ["none", "flex", "flex", "none"]);
+  const scene1ImgX = useTransform(scrollYProgress, [0.15, 0.2, 0.35, 0.4], [150, 0, 0, 150], { clamp: true });
+  const scene1TxtX = useTransform(scrollYProgress, [0.15, 0.2, 0.35, 0.4], [-150, 0, 0, -150], { clamp: true });
+
+  // Scene 2: 100% Natural (0.35 to 0.6)
+  const scene2Opacity = useTransform(scrollYProgress, [0.35, 0.4, 0.55, 0.6], [0, 1, 1, 0], { clamp: true });
+  const scene2Scale = useTransform(scrollYProgress, [0.35, 0.6], [0.95, 1.05], { clamp: true });
+  const scene2Display = useTransform(scrollYProgress, [0.34, 0.35, 0.6, 0.61], ["none", "flex", "flex", "none"]);
+  const scene2ImgX = useTransform(scrollYProgress, [0.35, 0.4, 0.55, 0.6], [-150, 0, 0, -150], { clamp: true });
+  const scene2TxtX = useTransform(scrollYProgress, [0.35, 0.4, 0.55, 0.6], [150, 0, 0, 150], { clamp: true });
+
+  // Scene 3: Freshly Roasted (0.55 to 0.8)
+  const scene3Opacity = useTransform(scrollYProgress, [0.55, 0.6, 0.75, 0.8], [0, 1, 1, 0], { clamp: true });
+  const scene3Scale = useTransform(scrollYProgress, [0.55, 0.8], [0.95, 1.05], { clamp: true });
+  const scene3Display = useTransform(scrollYProgress, [0.54, 0.55, 0.8, 0.81], ["none", "flex", "flex", "none"]);
+  const scene3ImgX = useTransform(scrollYProgress, [0.55, 0.6, 0.75, 0.8], [150, 0, 0, 150], { clamp: true });
+  const scene3TxtX = useTransform(scrollYProgress, [0.55, 0.6, 0.75, 0.8], [-150, 0, 0, -150], { clamp: true });
+
+  // Scene 4: Quality Assured (0.75 to 1)
+  const scene4Opacity = useTransform(scrollYProgress, [0.75, 0.8, 0.95, 1], [0, 1, 1, 1], { clamp: true });
+  const scene4Scale = useTransform(scrollYProgress, [0.75, 1], [0.95, 1.05], { clamp: true });
+  const scene4Display = useTransform(scrollYProgress, [0.74, 0.75, 1], ["none", "flex", "flex"]);
+  const scene4ImgX = useTransform(scrollYProgress, [0.75, 0.8, 0.95, 1], [-150, 0, 0, 0], { clamp: true });
+  const scene4TxtX = useTransform(scrollYProgress, [0.75, 0.8, 0.95, 1], [150, 0, 0, 0], { clamp: true });
+
+  // Background Nuts Animation
+  const nutY1 = useTransform(scrollYProgress, [0, 1], [50, -300]);
+  const nutR1 = useTransform(scrollYProgress, [0, 1], [0, 180]);
+  const nutY2 = useTransform(scrollYProgress, [0, 1], [-20, -250]);
+  const nutR2 = useTransform(scrollYProgress, [0, 1], [0, -120]);
+  const nutY3 = useTransform(scrollYProgress, [0, 1], [80, -400]);
+  const nutR3 = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const nutY4 = useTransform(scrollYProgress, [0, 1], [10, -350]);
+  const nutR4 = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const nutY5 = useTransform(scrollYProgress, [0, 1], [150, -500]);
+  const nutR5 = useTransform(scrollYProgress, [0, 1], [0, 220]);
+  const nutY6 = useTransform(scrollYProgress, [0, 1], [120, -450]);
+  const nutR6 = useTransform(scrollYProgress, [0, 1], [0, -180]);
+  
+  const nutOpacity = useTransform(scrollYProgress, [0, 0.1, 0.15], [1, 1, 0], { clamp: true });
+  const nutDisplay = useTransform(scrollYProgress, [0, 0.14, 0.15], ["block", "block", "none"]);
 
   return (
-    <section className="section features-section" ref={sectionRef} style={{ overflow: 'hidden', position: 'relative' }}>
-      
-      {/* Decorative Background Elements */}
-      <motion.div style={{ position: 'absolute', top: '10%', left: '8%', zIndex: 2, y: scrollY1, rotate: rotate1, pointerEvents: 'none' }}>
-        <img 
-          src="/images/nut/hazelnut.png" alt="" 
-          style={{ width: '80px', opacity: 0.9, mixBlendMode: 'multiply' }}
-        />
-      </motion.div>
-
-      <motion.div style={{ position: 'absolute', top: '5%', right: '10%', zIndex: 2, y: scrollY2, rotate: rotate2, pointerEvents: 'none' }}>
-        <img 
-          src="/images/nut/cashew.png" alt="" 
-          style={{ width: '90px', opacity: 0.9, mixBlendMode: 'multiply' }}
-        />
-      </motion.div>
-
-      <motion.div style={{ position: 'absolute', top: '25%', left: '15%', zIndex: 2, y: scrollY3, rotate: rotate3, pointerEvents: 'none' }}>
-        <img 
-          src="/images/nut/almond.png" alt="" 
-          style={{ width: '100px', opacity: 0.9, mixBlendMode: 'multiply' }}
-        />
-      </motion.div>
-
-      <motion.div style={{ position: 'absolute', top: '30%', right: '12%', zIndex: 2, y: scrollY4, rotate: rotate4, pointerEvents: 'none' }}>
-        <img 
-          src="/images/nut/pistachio.png" alt="" 
-          style={{ width: '85px', opacity: 0.9, mixBlendMode: 'multiply' }}
-        />
-      </motion.div>
-
-      {/* Duplicates */}
-      <motion.div style={{ position: 'absolute', top: '45%', left: '5%', zIndex: 2, y: scrollY5, rotate: rotate5, pointerEvents: 'none' }}>
-        <img 
-          src="/images/nut/cashew.png" alt="" 
-          style={{ width: '95px', opacity: 0.8, mixBlendMode: 'multiply', transform: 'scaleX(-1)' }}
-        />
-      </motion.div>
-
-      <motion.div style={{ position: 'absolute', top: '40%', right: '7%', zIndex: 2, y: scrollY6, rotate: rotate6, pointerEvents: 'none' }}>
-        <img 
-          src="/images/nut/almond.png" alt="" 
-          style={{ width: '90px', opacity: 0.8, mixBlendMode: 'multiply', transform: 'scaleY(-1)' }}
-        />
-      </motion.div>
-
-      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="title-section">
-          <span className="subtitle">The <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" /> Promise</span>
-          <h2 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>Why Choose <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" style={{ transform: 'none', margin: 0 }} /></h2>
-          <p>We believe in delivering nothing but excellence. Every product that bears the <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" /> name represents our commitment to quality, freshness, and authentic taste.</p>
-        </div>
+    <section ref={containerRef} className="cinematic-container" style={{ height: '500vh' }}>
+      <div className="cinematic-sticky">
         
-        <div className="grid-4">
-          {features.map((feature, index) => (
-            <motion.div 
-              key={feature.id}
-              initial={{ opacity: 0, y: 150 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.7, delay: index * 0.15, type: "spring", stiffness: 50, damping: 15 }}
-              className="feature-card"
-            >
-              <div className="feature-image-wrapper">
-                <img src={feature.image} alt={feature.title} className="feature-image" />
-              </div>
-              <h3>{feature.title}</h3>
-              <p>{feature.desc}</p>
+        {/* Decorative Background Nuts */}
+        <motion.div className="decorative-nut" style={{ position: 'absolute', top: '10%', left: '8%', zIndex: 1, y: nutY1, rotate: nutR1, opacity: nutOpacity, display: nutDisplay, pointerEvents: 'none' }}>
+          <img src="/images/nut/hazelnut.png" alt="" style={{ width: '80px', opacity: 0.8, mixBlendMode: 'multiply' }} />
+        </motion.div>
+        <motion.div className="decorative-nut" style={{ position: 'absolute', top: '15%', right: '10%', zIndex: 1, y: nutY2, rotate: nutR2, opacity: nutOpacity, display: nutDisplay, pointerEvents: 'none' }}>
+          <img src="/images/nut/cashew.png" alt="" style={{ width: '90px', opacity: 0.8, mixBlendMode: 'multiply' }} />
+        </motion.div>
+        <motion.div className="decorative-nut" style={{ position: 'absolute', top: '40%', left: '15%', zIndex: 1, y: nutY3, rotate: nutR3, opacity: nutOpacity, display: nutDisplay, pointerEvents: 'none' }}>
+          <img src="/images/nut/almond.png" alt="" style={{ width: '100px', opacity: 0.8, mixBlendMode: 'multiply' }} />
+        </motion.div>
+        <motion.div className="decorative-nut" style={{ position: 'absolute', top: '35%', right: '12%', zIndex: 1, y: nutY4, rotate: nutR4, opacity: nutOpacity, display: nutDisplay, pointerEvents: 'none' }}>
+          <img src="/images/nut/pistachio.png" alt="" style={{ width: '85px', opacity: 0.8, mixBlendMode: 'multiply' }} />
+        </motion.div>
+        <motion.div className="decorative-nut" style={{ position: 'absolute', top: '70%', left: '10%', zIndex: 1, y: nutY5, rotate: nutR5, opacity: nutOpacity, display: nutDisplay, pointerEvents: 'none' }}>
+          <img src="/images/nut/cashew.png" alt="" style={{ width: '95px', opacity: 0.7, mixBlendMode: 'multiply', transform: 'scaleX(-1)' }} />
+        </motion.div>
+        <motion.div className="decorative-nut" style={{ position: 'absolute', top: '65%', right: '8%', zIndex: 1, y: nutY6, rotate: nutR6, opacity: nutOpacity, display: nutDisplay, pointerEvents: 'none' }}>
+          <img src="/images/nut/almond.png" alt="" style={{ width: '90px', opacity: 0.7, mixBlendMode: 'multiply', transform: 'scaleY(-1)' }} />
+        </motion.div>
+
+        {/* Scene 0: Title Intro */}
+        <motion.div 
+          className="cinematic-scene intro"
+          style={{ display: introDisplay }}
+        >
+          <div className="cinematic-scene-inner" style={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '15vh' }}>
+            <div className="cinematic-content" style={{ zIndex: 10, textAlign: 'center', alignItems: 'center', maxWidth: '900px' }}>
+              
+              <motion.div initial={{ y: -30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, amount: 0.8 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0 }}>
+                <motion.span className="subtitle" style={{ opacity: introOpacity1, y: introY1, letterSpacing: '0.2em', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+                  The <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" style={{ height: '1.8em', transform: 'translateY(-2px)' }} /> Promise
+                </motion.span>
+              </motion.div>
+
+              <motion.div initial={{ y: -30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, amount: 0.8 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}>
+                <motion.h2 style={{ opacity: introOpacity2, y: introY2, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', flexWrap: 'wrap', fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: '#2A1A12', marginBottom: '25px', fontFamily: 'var(--font-main)', lineHeight: 1.2 }}>
+                  Why Choose <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" style={{ height: '1.6em', transform: 'none', margin: 0 }} />
+                </motion.h2>
+              </motion.div>
+
+              <motion.div initial={{ y: -30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, amount: 0.8 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}>
+                <motion.p style={{ opacity: introOpacity3, y: introY3, maxWidth: '600px', margin: '0 auto', fontSize: '1.2rem', color: '#6B5B50', lineHeight: 1.8 }}>We believe in delivering nothing but excellence. Every product that bears the Ezwah name represents our commitment to quality, freshness, and authentic taste.</motion.p>
+              </motion.div>
+
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Scene 1 */}
+        <motion.div className="cinematic-scene" style={{ opacity: scene1Opacity, display: scene1Display, pointerEvents: 'none' }}>
+          <div className="cinematic-scene-inner">
+            <motion.div className="cinematic-image-wrapper" style={{ scale: scene1Scale, x: scene1ImgX }}>
+              <img src="/images/feature_premium.png" alt="Premium Selection" />
             </motion.div>
-          ))}
-        </div>
+            <motion.div className="cinematic-content" style={{ x: scene1TxtX }}>
+              <span className="cinematic-label">PREMIUM SELECTION</span>
+              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>Handpicked from<br/>the world's finest farms.</h2>
+              <p className="cinematic-desc">Every nut is carefully selected for exceptional quality, freshness, and taste.</p>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Scene 2 */}
+        <motion.div className="cinematic-scene reverse" style={{ opacity: scene2Opacity, display: scene2Display, pointerEvents: 'none' }}>
+          <div className="cinematic-scene-inner">
+            <motion.div className="cinematic-image-wrapper" style={{ scale: scene2Scale, x: scene2ImgX }}>
+              <img src="/images/feature_natural.png" alt="100% Natural" />
+            </motion.div>
+            <motion.div className="cinematic-content" style={{ x: scene2TxtX }}>
+              <span className="cinematic-label">100% NATURAL</span>
+              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>Nothing Added.<br/>Nothing Artificial.</h2>
+              <p className="cinematic-desc">Pure, authentic goodness crafted to deliver an unmatched natural taste experience.</p>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Scene 3 */}
+        <motion.div className="cinematic-scene" style={{ opacity: scene3Opacity, display: scene3Display, pointerEvents: 'none' }}>
+          <div className="cinematic-scene-inner">
+            <motion.div className="cinematic-image-wrapper" style={{ scale: scene3Scale, x: scene3ImgX }}>
+              <img src="/images/feature_roasted.png" alt="Freshly Roasted" />
+            </motion.div>
+            <motion.div className="cinematic-content" style={{ x: scene3TxtX }}>
+              <span className="cinematic-label">FRESHLY ROASTED</span>
+              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>Crafted for<br/>Maximum Flavor.</h2>
+              <p className="cinematic-desc">Roasted in small batches only after your order to preserve freshness and crunch.</p>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Scene 4 */}
+        <motion.div className="cinematic-scene reverse" style={{ opacity: scene4Opacity, display: scene4Display, pointerEvents: 'none' }}>
+          <div className="cinematic-scene-inner">
+            <motion.div className="cinematic-image-wrapper" style={{ scale: scene4Scale, x: scene4ImgX }}>
+              <img src="/images/feature_quality.png" alt="Quality Assured" />
+            </motion.div>
+            <motion.div className="cinematic-content" style={{ x: scene4TxtX }}>
+              <span className="cinematic-label">QUALITY ASSURED</span>
+              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>Excellence in<br/>Every Pack.</h2>
+              <p className="cinematic-desc">Every batch passes rigorous quality inspections before reaching your table.</p>
+            </motion.div>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

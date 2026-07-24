@@ -32,7 +32,7 @@ const Footer = () => {
           <div>
             <h4 style={{ color: 'white', marginBottom: '20px', fontSize: '1.2rem', fontWeight: '500' }}>Quick Links</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <li><Link to="/" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>Home</Link></li>
+              <li><Link to="/" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>Home</Link></li>
               <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>About Us</Link></li>
               <li><Link to="/products" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>Products</Link></li>
               <li><Link to="/contact" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>Contact</Link></li>

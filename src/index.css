@@ -52,11 +52,11 @@ button {
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 clamp(16px, 3vw, 24px);
 }
 
 .section {
-  padding: 100px 0;
+  padding: clamp(60px, 10vw, 100px) 0;
 }
 
 /* Typography */
@@ -68,6 +68,7 @@ h1, h2, h3, h4 {
 
 p {
   color: var(--text-light);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
 }
 
 /* Buttons */
@@ -75,10 +76,10 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 32px;
+  padding: clamp(10px, 2vw, 14px) clamp(24px, 4vw, 32px);
   border-radius: 50px;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
   transition: var(--transition);
   gap: 10px;
   position: relative;
@@ -113,38 +114,39 @@ p {
 /* Title Section */
 .title-section {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: clamp(40px, 6vw, 60px);
 }
 .title-section .subtitle {
   color: var(--primary);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
+  letter-spacing: clamp(1px, 0.5vw, 2px);
+  margin-bottom: clamp(10px, 2vw, 15px);
   display: block;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
 }
 .title-section h2 {
-  font-size: 3rem;
-  margin-bottom: 20px;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: clamp(15px, 2.5vw, 20px);
 }
 .title-section p {
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 2vw, 1.15rem);
   max-width: 600px;
   margin: 0 auto;
 }
 
 /* Grids */
-.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(20px, 4vw, 40px); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 4vw, 40px); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(15px, 3vw, 30px); }
 
 @media (max-width: 1024px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 768px) {
+
+@media (max-width: 600px) {
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  .title-section h2 { font-size: 2.2rem; }
-  .section { padding: 60px 0; }
 }
 
 /* Utilities */

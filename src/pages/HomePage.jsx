@@ -12,7 +12,7 @@ const HomePage = () => {
       <Features />
       
       {/* Categories Grid replacing Products Grid */}
-      <section className="section categories-section" style={{ background: 'var(--primary)', padding: '120px 0 0 0', position: 'relative' }}>
+      <section className="section categories-section" style={{ background: 'var(--primary)', padding: 'clamp(80px, 15vw, 120px) 0 0 0', position: 'relative' }}>
         
         {/* Asymmetrical Curve Divider from White to Red */}
         <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', overflow: 'hidden', lineHeight: 0 }}>
@@ -22,7 +22,7 @@ const HomePage = () => {
         </div>
 
         <div className="container">
-          <div className="title-section" style={{ color: 'white', marginBottom: '40px' }}>
+          <div className="title-section" style={{ color: 'white', marginBottom: 'clamp(30px, 5vw, 40px)' }}>
             <span className="subtitle" style={{ color: 'var(--bg-color)' }}>Explore Our Range</span>
             <h2 style={{ color: 'white' }}>Product Categories</h2>
             <p style={{ color: '#fdd' }}>Discover our wide selection of premium nuts and seeds, carefully sourced and roasted to perfection.</p>
@@ -60,7 +60,7 @@ const HomePage = () => {
                     margin: 0,
                     padding: 0,
                     boxShadow: 'none',
-                    height: '350px',
+                    height: 'clamp(200px, 25vw, 350px)',
                     width: '100%',
                     border: 'none',
                     position: 'relative'
@@ -70,15 +70,15 @@ const HomePage = () => {
                     className="category-card-bg" 
                     style={{ backgroundImage: `url(${bgImg})` }}
                   ></div>
-                  <div className="category-card-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '40px 30px', background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%)', width: '100%', height: '100%', position: 'relative', zIndex: 2 }}>
+                  <div className="category-card-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(20px, 4vw, 40px) clamp(15px, 3vw, 30px)', background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%)', width: '100%', height: '100%', position: 'relative', zIndex: 2 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                       <h3 style={{ textShadow: '0 2px 10px rgba(0,0,0,0.9)', margin: 0, color: 'white' }}>{cat.toUpperCase()}</h3>
                       <span className="view-link-icon" style={{ 
                         display: 'inline-flex', 
                         alignItems: 'center', 
                         justifyContent: 'center',
-                        width: '50px', 
-                        height: '50px', 
+                        width: 'clamp(35px, 4vw, 50px)', 
+                        height: 'clamp(35px, 4vw, 50px)', 
                         border: '2px solid white', 
                         borderRadius: '50%',
                         color: 'white',

@@ -807,3 +807,16 @@
   color: var(--primary) !important;
 }
 
+
+/* Force 3 columns on all devices for products showcase */
+.products-grid-always-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (min-width: 768px) {
+  .products-grid-always-3 {
+    gap: 40px;
+  }
+}
+

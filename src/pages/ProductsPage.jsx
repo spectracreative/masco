@@ -33,7 +33,7 @@ const ProductsPage = () => {
               <Link to="/products" className="btn" style={{ marginTop: '20px', display: 'inline-block' }}>View All Products</Link>
             </div>
           ) : (
-            <motion.div layout className="grid-3">
+            <motion.div layout className="products-grid-always-3">
               <AnimatePresence>
                 {filteredProducts.map((prod) => (
                   <motion.div 

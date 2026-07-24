@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, Search, Menu } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { categories } from '../data/products';
 import { useCart } from '../context/CartContext';
@@ -39,7 +39,18 @@ const Header = () => {
           </Link>
         </div>
         
+        {/* Mobile Backdrop */}
+        <div className={`mobile-backdrop ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}></div>
+
         <ul className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+          
+          <div className="mobile-menu-header d-md-none">
+            <img src="/images/logo2.png" alt="Ezwah Logo" style={{ height: '35px' }} />
+            <button className="icon-btn" onClick={() => setMobileMenuOpen(false)} style={{ color: '#2A1A12' }}>
+              <X size={28} />
+            </button>
+          </div>
+
           <li><Link to="/" onClick={() => setMobileMenuOpen(false)}>Home</Link></li>
           <li><Link to="/about" onClick={() => setMobileMenuOpen(false)}>About</Link></li>
           <li className="dropdown-parent">
@@ -87,8 +98,7 @@ const Header = () => {
             </button>
           )}
           
-
-          <button className="icon-btn d-md-none" aria-label="Menu" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          <button className="icon-btn d-md-none" aria-label="Menu" onClick={() => setMobileMenuOpen(true)}>
             <Menu size={24} />
           </button>
         </div>

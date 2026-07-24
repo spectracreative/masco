@@ -28,7 +28,7 @@ const Features = () => {
   const features = [
     { id: 1, image: "/images/feature_premium.png", title: "Premium Selection", desc: "We hand-select only the highest grade nuts and beans from trusted farms worldwide." },
     { id: 2, image: "/images/feature_natural.png", title: "100% Natural", desc: "No artificial flavors or preservatives. Just pure, natural goodness in every bite." },
-    { id: 3, image: "/images/feature_roasted.png", title: "Freshly Roasted", desc: "Our coffee beans are roasted to order, ensuring maximum flavor and aroma." },
+    { id: 3, image: "/images/feature_roasted.png", title: "Freshly Roasted", desc: "Our premium nuts and seeds are roasted to order, ensuring maximum flavor and crunch." },
     { id: 4, image: "/images/feature_quality.png", title: "Quality Assured", desc: "Rigorous quality control processes guarantee perfection in every package we deliver." },
   ];
 
@@ -36,28 +36,28 @@ const Features = () => {
     <section className="section features-section" ref={sectionRef} style={{ overflow: 'hidden', position: 'relative' }}>
       
       {/* Decorative Background Elements */}
-      <motion.div style={{ position: 'absolute', top: '10%', left: '8%', zIndex: 0, y: scrollY1, rotate: rotate1, pointerEvents: 'none' }}>
+      <motion.div style={{ position: 'absolute', top: '10%', left: '8%', zIndex: 2, y: scrollY1, rotate: rotate1, pointerEvents: 'none' }}>
         <img 
           src="/images/nut/hazelnut.png" alt="" 
           style={{ width: '80px', opacity: 0.9, mixBlendMode: 'multiply' }}
         />
       </motion.div>
 
-      <motion.div style={{ position: 'absolute', top: '5%', right: '10%', zIndex: 0, y: scrollY2, rotate: rotate2, pointerEvents: 'none' }}>
+      <motion.div style={{ position: 'absolute', top: '5%', right: '10%', zIndex: 2, y: scrollY2, rotate: rotate2, pointerEvents: 'none' }}>
         <img 
           src="/images/nut/cashew.png" alt="" 
           style={{ width: '90px', opacity: 0.9, mixBlendMode: 'multiply' }}
         />
       </motion.div>
 
-      <motion.div style={{ position: 'absolute', top: '25%', left: '15%', zIndex: 0, y: scrollY3, rotate: rotate3, pointerEvents: 'none' }}>
+      <motion.div style={{ position: 'absolute', top: '25%', left: '15%', zIndex: 2, y: scrollY3, rotate: rotate3, pointerEvents: 'none' }}>
         <img 
           src="/images/nut/almond.png" alt="" 
           style={{ width: '100px', opacity: 0.9, mixBlendMode: 'multiply' }}
         />
       </motion.div>
 
-      <motion.div style={{ position: 'absolute', top: '30%', right: '12%', zIndex: 0, y: scrollY4, rotate: rotate4, pointerEvents: 'none' }}>
+      <motion.div style={{ position: 'absolute', top: '30%', right: '12%', zIndex: 2, y: scrollY4, rotate: rotate4, pointerEvents: 'none' }}>
         <img 
           src="/images/nut/pistachio.png" alt="" 
           style={{ width: '85px', opacity: 0.9, mixBlendMode: 'multiply' }}
@@ -65,14 +65,14 @@ const Features = () => {
       </motion.div>
 
       {/* Duplicates */}
-      <motion.div style={{ position: 'absolute', top: '45%', left: '5%', zIndex: 0, y: scrollY5, rotate: rotate5, pointerEvents: 'none' }}>
+      <motion.div style={{ position: 'absolute', top: '45%', left: '5%', zIndex: 2, y: scrollY5, rotate: rotate5, pointerEvents: 'none' }}>
         <img 
           src="/images/nut/cashew.png" alt="" 
           style={{ width: '95px', opacity: 0.8, mixBlendMode: 'multiply', transform: 'scaleX(-1)' }}
         />
       </motion.div>
 
-      <motion.div style={{ position: 'absolute', top: '40%', right: '7%', zIndex: 0, y: scrollY6, rotate: rotate6, pointerEvents: 'none' }}>
+      <motion.div style={{ position: 'absolute', top: '40%', right: '7%', zIndex: 2, y: scrollY6, rotate: rotate6, pointerEvents: 'none' }}>
         <img 
           src="/images/nut/almond.png" alt="" 
           style={{ width: '90px', opacity: 0.8, mixBlendMode: 'multiply', transform: 'scaleY(-1)' }}
@@ -90,10 +90,10 @@ const Features = () => {
           {features.map((feature, index) => (
             <motion.div 
               key={feature.id}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 150 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.7, delay: index * 0.15, type: "spring", stiffness: 50, damping: 15 }}
               className="feature-card"
             >
               <div className="feature-image-wrapper">

@@ -13,37 +13,70 @@ const ContactPage = () => {
 
       <section className="section" style={{ background: 'var(--bg-color)' }}>
         <div className="container">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            style={{ background: 'white', borderRadius: '24px', padding: '50px', boxShadow: 'var(--shadow-sm)', maxWidth: '800px', margin: '0 auto' }}
-          >
-            <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <div className="contact-form-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '50px', alignItems: 'start', maxWidth: '1000px', margin: '0 auto' }}>
+            
+            {/* Contact Information */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              style={{ background: 'white', borderRadius: '24px', padding: '40px', boxShadow: 'var(--shadow-sm)' }}
+            >
+              <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Get in Touch</h2>
+              <p style={{ color: '#555', marginBottom: '30px', lineHeight: '1.6' }}>Have questions about our products or want to discuss a partnership? We're here to help.</p>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div>
-                  <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>First Name</label>
-                  <input type="text" placeholder="John" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
+                  <h4 style={{ fontWeight: '600', marginBottom: '5px' }}>Email Us</h4>
+                  <p style={{ color: '#555' }}>mascounitedksa@gmail.com</p>
                 </div>
                 <div>
-                  <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Last Name</label>
-                  <input type="text" placeholder="Doe" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
+                  <h4 style={{ fontWeight: '600', marginBottom: '5px' }}>Call Us</h4>
+                  <p style={{ color: '#555' }}>+966 506 85 5411</p>
+                </div>
+                <div>
+                  <h4 style={{ fontWeight: '600', marginBottom: '10px' }}>Visit Us (Headquarters)</h4>
+                  <p style={{ color: '#555', margin: '0 0 5px 0' }}>Building No. 4045, Street No. 40</p>
+                  <p style={{ color: '#555', margin: '0 0 5px 0' }}>Al Misfat Dist. (Secondary No. 8211)</p>
+                  <p style={{ color: '#555', margin: '0 0 5px 0' }}>Riyadh 14528, Kingdom of Saudi Arabia</p>
+                  <p style={{ color: '#888', margin: '5px 0 0 0', fontSize: '0.9rem' }}>Short Address: RMFA4045</p>
                 </div>
               </div>
-              
-              <div>
-                <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Email Address</label>
-                <input type="email" placeholder="john@example.com" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
-              </div>
-              
-              <div>
-                <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Message</label>
-                <textarea rows="5" placeholder="How can we help you?" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none', resize: 'vertical' }}></textarea>
-              </div>
-              
-              <button type="button" className="btn" style={{ alignSelf: 'flex-start', padding: '15px 40px', fontSize: '1.1rem' }}>Send Message</button>
-            </form>
-          </motion.div>
+            </motion.div>
+
+            {/* Contact Form */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              style={{ background: 'white', borderRadius: '24px', padding: '50px', boxShadow: 'var(--shadow-sm)' }}
+            >
+              <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div className="contact-form-grid">
+                  <div>
+                    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>First Name</label>
+                    <input type="text" placeholder="John" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Last Name</label>
+                    <input type="text" placeholder="Doe" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
+                  </div>
+                </div>
+                
+                <div>
+                  <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Email Address</label>
+                  <input type="email" placeholder="john@example.com" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
+                </div>
+                
+                <div>
+                  <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Message</label>
+                  <textarea rows="5" placeholder="How can we help you?" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none', resize: 'vertical' }}></textarea>
+                </div>
+                
+                <button type="button" className="btn" style={{ alignSelf: 'flex-start', padding: '15px 40px', fontSize: '1.1rem' }}>Send Message</button>
+              </form>
+            </motion.div>
+          </div>
         </div>
       </section>
     </main>

@@ -33,11 +33,8 @@ const Header = () => {
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
       <div className="container header-container">
         <div className="logo">
-          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '15px', textDecoration: 'none' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', color: 'white', fontWeight: 'normal', fontSize: '1.2rem', lineHeight: '1.1', textAlign: 'right' }}>
-              <span>Why</span>
-              <span>choose</span>
-            </div>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+            <img src="/images/logo.png" alt="Baja Logo" />
             <img src="/images/logo2.png" alt="Ezwah Logo" style={{ filter: 'none' }} />
           </Link>
         </div>
@@ -47,13 +44,26 @@ const Header = () => {
           <li><Link to="/about" onClick={() => setMobileMenuOpen(false)}>About</Link></li>
           <li className="dropdown-parent">
             <Link to="/products" className="dropdown-toggle" onClick={() => setMobileMenuOpen(false)}>Products</Link>
-            <ul className="dropdown-menu">
-              {categories.map(cat => (
-                <li key={cat}>
-                  <Link to={`/products/${encodeURIComponent(cat)}`} onClick={() => setMobileMenuOpen(false)}>{cat}</Link>
-                </li>
-              ))}
-            </ul>
+            <div className="dropdown-menu mega-menu">
+              <div className="mega-menu-grid">
+                {categories.map(cat => {
+                  let name = cat.toLowerCase();
+                  if (cat === "Sunflower Seed") name = "sunflower-seed/sunflower";
+                  else if (cat === "Pumpkin Seed") name = "pumpkin-seed/pumpkin";
+                  else name = `${name}/${name}`;
+                  const bgImg = `/images/categories/${name}.png`;
+                  
+                  return (
+                    <Link to={`/products/${encodeURIComponent(cat)}`} key={cat} onClick={() => setMobileMenuOpen(false)} className="mega-menu-item">
+                      <div className="mega-menu-img-wrapper">
+                        <img src={bgImg} alt={cat} />
+                      </div>
+                      <span style={{ fontSize: '0.95rem', fontWeight: '500' }}>{cat}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
           </li>
           <li><Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</Link></li>
         </ul>

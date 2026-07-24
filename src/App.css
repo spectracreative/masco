@@ -266,20 +266,20 @@
 }
 .feature-card:hover {
   background: white;
-  border-color: var(--border-color);
+  border-color: transparent;
   transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.05);
 }
 .feature-image-wrapper {
   width: 160px; height: 160px;
   margin: 0 auto 25px;
   border-radius: 20px;
   overflow: hidden;
-  background: var(--border-color);
+  background: transparent;
   display: flex;
   align-items: center; justify-content: center;
   transition: var(--transition);
   border: 4px solid white;
-  box-shadow: var(--shadow-sm);
 }
 .feature-image {
   width: 100%;
@@ -289,7 +289,7 @@
 }
 .feature-card:hover .feature-image-wrapper {
   transform: scale(1.05);
-  border-color: var(--border-color);
+  border-color: white;
 }
 .feature-card:hover .feature-image {
   transform: scale(1.1);
@@ -668,5 +668,142 @@
 
 .ezwah-inline-logo.white {
   filter: brightness(0) invert(1);
+}
+
+
+/* Mega Menu specific styles */
+@media (min-width: 769px) {
+  .dropdown-menu.mega-menu {
+    width: 650px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  }
+}
+
+.mega-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (min-width: 500px) {
+  .mega-menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 769px) {
+  .mega-menu-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.mega-menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.nav-links .mega-menu-item {
+  color: var(--text-color) !important;
+}
+
+.nav-links .mega-menu-item:hover {
+  color: var(--primary) !important;
+  transform: translateY(-3px);
+  background: transparent !important;
+}
+
+.nav-links .mega-menu-item::after {
+  display: none !important;
+}
+
+.mega-menu-img-wrapper {
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid #eee;
+  transition: var(--transition);
+}
+
+.mega-menu-item:hover .mega-menu-img-wrapper {
+  border-color: #ddd;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.mega-menu-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.mega-menu-item:hover .mega-menu-img-wrapper img {
+  transform: scale(1.05);
+}
+
+
+/* Bento Category Grid Layout */
+.bento-category-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+
+@media (min-width: 768px) {
+  .bento-category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .bento-category-grid .category-card:nth-child(1),
+  .bento-category-grid .category-card:nth-child(6) {
+    grid-column: span 2;
+  }
+}
+
+/* Hover Background Zoom */
+.category-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
+}
+
+.category-card:hover .category-card-bg {
+  transform: scale(1.1);
+}
+
+.category-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+
+.category-card:hover .view-link-icon {
+  background: white;
+  color: var(--primary) !important;
 }
 

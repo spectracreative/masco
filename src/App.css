@@ -1099,8 +1099,10 @@
 }
 
 .cinematic-image-wrapper img {
+  display: block;
   width: 100%;
-  max-width: 550px;
+  max-width: 350px;
+  margin: 0 auto;
   height: auto;
   object-fit: contain;
   border-radius: 20px;
@@ -1120,7 +1122,7 @@
   }
   .cinematic-image-wrapper {
     flex: 0 0 auto;
-    max-width: 80%;
+    max-width: 50%;
   }
 }
 

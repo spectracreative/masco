@@ -1078,3 +1078,12 @@
     max-width: 80%;
   }
 }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  align-items: start;
+  max-width: 800px;
+  margin: 0 auto;
+}

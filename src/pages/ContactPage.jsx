@@ -13,19 +13,28 @@ const ContactPage = () => {
 
       <section className="section" style={{ background: 'var(--bg-color)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '50px', alignItems: 'start', maxWidth: '1000px', margin: '0 auto' }}>
+          <div className="contact-grid">
             
             {/* Contact Information */}
             <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              style={{ background: 'white', borderRadius: '24px', padding: '40px', boxShadow: 'var(--shadow-sm)' }}
             >
-              <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Get in Touch</h2>
-              <p style={{ color: '#555', marginBottom: '30px', lineHeight: '1.6' }}>Have questions about our products or want to discuss a partnership? We're here to help.</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
+                <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#E3000F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/>
+                  <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/>
+                  <path d="M6 5h5"/>
+                  <path d="M6 8h3"/>
+                  <path d="M14 13h5"/>
+                  <path d="M14 16h3"/>
+                </svg>
+                <h2 style={{ fontSize: '2rem', margin: 0, color: '#2A1A12' }}>Get in Touch</h2>
+              </div>
+              <p style={{ color: '#555', marginBottom: '30px', lineHeight: '1.6', fontSize: '1.1rem' }}>Have questions about our products or want to discuss a partnership? We're here to help.</p>
               
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <div style={{ background: 'white', borderRadius: '24px', padding: '40px', boxShadow: 'var(--shadow-sm)', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div>
                   <h4 style={{ fontWeight: '600', marginBottom: '5px' }}>Email Us</h4>
                   <p style={{ color: '#555' }}>mascounitedksa@gmail.com</p>
@@ -55,17 +64,17 @@ const ContactPage = () => {
                 <div className="contact-form-grid">
                   <div>
                     <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>First Name</label>
-                    <input type="text" placeholder="John" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
+                    <input type="text" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
                   </div>
                   <div>
                     <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Last Name</label>
-                    <input type="text" placeholder="Doe" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
+                    <input type="text" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
                   </div>
                 </div>
                 
                 <div>
                   <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Email Address</label>
-                  <input type="email" placeholder="john@example.com" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
+                  <input type="email" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
                 </div>
                 
                 <div>

@@ -69,6 +69,10 @@
   color: white;
   opacity: 0.9;
 }
+.d-md-none,
+.mobile-menu-header {
+  display: none !important;
+}
 .header-actions {
   display: flex;
   align-items: center;

@@ -44,12 +44,12 @@ const Header = () => {
 
         <ul className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
           
-          <div className="mobile-menu-header d-md-none">
+          <li className="mobile-menu-header">
             <img src="/images/logo2.png" alt="Ezwah Logo" style={{ height: '35px' }} />
             <button className="icon-btn" onClick={() => setMobileMenuOpen(false)} style={{ color: '#2A1A12' }}>
               <X size={28} />
             </button>
-          </div>
+          </li>
 
           <li><Link to="/" onClick={() => setMobileMenuOpen(false)}>Home</Link></li>
           <li><Link to="/about" onClick={() => setMobileMenuOpen(false)}>About</Link></li>

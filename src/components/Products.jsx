@@ -1,36 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, ArrowRight } from 'lucide-react';
+import { allProducts, categories as dataCategories } from '../data/products';
 
 const Products = () => {
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const allProducts = [
-    { id: 1, category: "Cashew", name: "Cashew Dry Roast (Zero Oil)", weight: "18.0 gm", img: "/prod_nuts.png", tag: "Best Seller" },
-    { id: 2, category: "Almond", name: "Almond Roasted & Lemon, Salted", weight: "18.0 gm", img: "/prod_nuts.png" },
-    { id: 3, category: "Almond", name: "Almond Roasted & Lemon, Salted", weight: "80.0 gm", img: "/prod_nuts.png", tag: "Popular" },
-    { id: 4, category: "Almond", name: "Almond Roasted & Lemon, Salted", weight: "120.0 gm", img: "/prod_nuts.png" },
-    { id: 5, category: "Almond", name: "Almond Plain Roasted", weight: "18.0 gm", img: "/prod_nuts.png" },
-    { id: 6, category: "Almond", name: "Almond Plain Roasted", weight: "80.0 gm", img: "/prod_nuts.png" },
-    { id: 7, category: "Almond", name: "Almond Plain Roasted", weight: "120.0 gm", img: "/prod_nuts.png" },
-    { id: 8, category: "Pistachio", name: "Pistachio Roasted & Salt", weight: "18.0 gm", img: "/prod_nuts.png" },
-    { id: 9, category: "Pistachio", name: "Pistachio Roasted & Salt", weight: "55.0 gm", img: "/prod_nuts.png" },
-    { id: 10, category: "Pistachio", name: "Pistachio Roasted & Salt", weight: "120.0 gm", img: "/prod_nuts.png" },
-    { id: 11, category: "Pistachio", name: "Pistachio Plain Roasted", weight: "18.0 gm", img: "/prod_nuts.png" },
-    { id: 12, category: "Pistachio", name: "Pistachio Plain Roasted", weight: "55.0 gm", img: "/prod_nuts.png" },
-    { id: 13, category: "Pistachio", name: "Pistachio Plain Roasted", weight: "120.0 gm", img: "/prod_nuts.png" },
-    { id: 14, category: "Peanut", name: "Roasted Salted Peanut (Zero Oil)", weight: "12.0 gm", img: "/prod_nuts.png" },
-    { id: 15, category: "Sunflower Seed", name: "Roasted Sunflower Seed (Salted)", weight: "20.0 gm", img: "/prod_nuts.png" },
-    { id: 16, category: "Sunflower Seed", name: "Roasted Sunflower Seed (Salted)", weight: "65.0 gm", img: "/prod_nuts.png" },
-    { id: 17, category: "Sunflower Seed", name: "Roasted Sunflower Seed (Salted)", weight: "120.0 gm", img: "/prod_nuts.png" },
-    { id: 18, category: "Pumpkin Seed", name: "Pumpkin Seed Roasted Salted", weight: "18.0 gm", img: "/prod_nuts.png" },
-    { id: 19, category: "Pumpkin Seed", name: "Pumpkin Seed Roasted Salted", weight: "65.0 gm", img: "/prod_nuts.png" },
-    { id: 20, category: "Pumpkin Seed", name: "Pumpkin Seed Roasted Salted", weight: "120.0 gm", img: "/prod_nuts.png" },
-    { id: 21, category: "Mixed", name: "Mixed Nuts", weight: "18.0 gm", img: "/prod_nuts.png" },
-    { id: 22, category: "Mixed", name: "Mixed Nuts", weight: "120.0 gm", img: "/prod_nuts.png", tag: "Value Pack" },
-  ];
-
-  const categories = ["All", "Cashew", "Almond", "Pistachio", "Peanut", "Sunflower Seed", "Pumpkin Seed", "Mixed"];
+  const categories = ["All", ...dataCategories];
 
   const filteredProducts = activeCategory === "All" 
     ? allProducts 

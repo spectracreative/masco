@@ -104,13 +104,21 @@ const Features = () => {
               
               <motion.div initial={{ y: -30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, amount: 0.8 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0 }}>
                 <motion.span className="subtitle" style={{ opacity: introOpacity1, y: introY1, letterSpacing: '0.2em', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
-                  {t('features_subtitle')} <img src={inlineLogoSrc} alt="Ezwah" className="ezwah-inline-logo red" style={{ height: '1.8em', transform: 'translateY(-2px)' }} />
+                  {language === 'ar' ? (
+                    <>وعد <img src="/images/logo.png" alt="عزوة" className="ezwah-inline-logo red" style={{ height: '1.8em', transform: 'translateY(-2px)' }} /></>
+                  ) : (
+                    <>The <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" style={{ height: '1.8em', transform: 'translateY(-2px)' }} /> Promise</>
+                  )}
                 </motion.span>
               </motion.div>
 
               <motion.div initial={{ y: -30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, amount: 0.8 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}>
-                <motion.h2 style={{ opacity: introOpacity2, y: introY2, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', flexWrap: 'wrap', fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: '#2A1A12', marginBottom: '25px', fontFamily: 'var(--font-main)', lineHeight: 1.2 }}>
-                  {t('features_title')} <img src={inlineLogoSrc} alt="Ezwah" className="ezwah-inline-logo red" style={{ height: '1.6em', transform: 'none', margin: 0 }} />
+                <motion.h2 style={{ opacity: introOpacity2, y: introY2, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '16px', flexWrap: 'nowrap', fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: '#2A1A12', marginBottom: '25px', fontFamily: 'var(--font-main)', lineHeight: 1.2 }}>
+                  {language === 'ar' ? (
+                    <>لماذا تختار <img src="/images/logo.png" alt="عزوة" className="ezwah-inline-logo red" style={{ height: '1.2em', margin: 0 }} /></>
+                  ) : (
+                    <>Why Choose <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" style={{ height: '1.2em', margin: 0 }} /></>
+                  )}
                 </motion.h2>
               </motion.div>
 

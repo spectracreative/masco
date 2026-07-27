@@ -92,24 +92,34 @@ const AboutPage = () => {
             <WavyBorder />
             
             <div style={{
-              width: '300px',
-              height: '300px',
+              width: '320px',
+              height: '320px',
               borderRadius: '50%',
               overflow: 'hidden',
               boxShadow: '0 10px 25px rgba(0,0,0,0.15)',
               position: 'relative',
-              background: '#fcf8f2'
+              background: '#2A1A12'
             }}>
               <AnimatePresence mode="wait">
                 <motion.img 
                   key={currentImageIndex}
                   src={aboutImages[currentImageIndex]} 
                   alt="About Ezwah" 
-                  initial={{ opacity: 0, filter: 'brightness(2)', scale: 1.05 }}
-                  animate={{ opacity: 1, filter: 'brightness(1)', scale: 1 }}
+                  initial={{ opacity: 0, filter: 'brightness(2)', scale: 1.1 }}
+                  animate={{ opacity: 1, filter: 'brightness(1)', scale: 1.08 }}
                   exit={{ opacity: 0, filter: 'brightness(2)' }}
                   transition={{ duration: 0.4 }}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', padding: 0, display: 'block', position: 'absolute', top: 0, left: 0 }} 
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    objectFit: 'cover', 
+                    objectPosition: 'center',
+                    padding: 0, 
+                    display: 'block', 
+                    position: 'absolute', 
+                    top: 0, 
+                    left: 0 
+                  }} 
                 />
               </AnimatePresence>
             </div>

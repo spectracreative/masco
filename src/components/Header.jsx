@@ -36,16 +36,24 @@ const Header = () => {
       <div className="container header-container">
         <div className="logo">
           <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-            {language === 'ar' ? (
-              // Arabic Ezwah Logo
-              <img src="/images/logo.png" alt="شعار عزوة" style={{ height: scrolled ? '55px' : '75px', filter: 'none' }} />
-            ) : (
-              // English / Dual Ezwah Logo
-              <>
-                <img src="/images/logo.png" alt="Ezwah Arabic Logo" />
-                <img src="/images/logo2.png" alt="Ezwah English Logo" style={{ filter: 'none' }} />
-              </>
-            )}
+            <img 
+              src="/images/logo.png" 
+              alt="Ezwah Arabic Logo" 
+              style={{ 
+                height: scrolled ? '50px' : '65px', 
+                filter: 'brightness(0) invert(1)',
+                transition: 'var(--transition)'
+              }} 
+            />
+            <img 
+              src="/images/logo2.png" 
+              alt="Ezwah English Logo" 
+              style={{ 
+                height: scrolled ? '40px' : '50px', 
+                filter: 'none',
+                transition: 'var(--transition)'
+              }} 
+            />
           </Link>
         </div>
         
@@ -55,7 +63,10 @@ const Header = () => {
         <ul className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
           
           <li className="mobile-menu-header">
-            <img src={language === 'ar' ? "/images/logo.png" : "/images/logo2.png"} alt="Ezwah Logo" style={{ height: '35px' }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <img src="/images/logo.png" alt="Ezwah Logo" style={{ height: '30px', filter: 'brightness(0) invert(1)' }} />
+              <img src="/images/logo2.png" alt="Ezwah Logo" style={{ height: '25px' }} />
+            </div>
             <button className="icon-btn" onClick={() => setMobileMenuOpen(false)} style={{ color: '#2A1A12' }}>
               <X size={28} />
             </button>
@@ -87,19 +98,11 @@ const Header = () => {
             </div>
           </li>
           <li><Link to="/contact" onClick={() => setMobileMenuOpen(false)}>{t('nav_contact')}</Link></li>
-          
-          {/* Mobile Language Switcher */}
-          <li className="mobile-lang-item" style={{ marginTop: '15px' }}>
-            <button onClick={toggleLanguage} className="lang-switch-btn mobile">
-              <Globe size={18} />
-              <span>{language === 'en' ? 'العربية' : 'English'}</span>
-            </button>
-          </li>
         </ul>
         
         <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
           
-          {/* Header Desktop Language Switcher Button */}
+          {/* Header Language Switcher Button (Single button next to search icon) */}
           <button 
             onClick={toggleLanguage} 
             className="lang-switch-btn"

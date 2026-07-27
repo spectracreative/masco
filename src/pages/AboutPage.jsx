@@ -30,9 +30,9 @@ const AboutPage = () => {
   const { t, language } = useLanguage();
   
   const aboutImages = [
-    "/images/feature_premium.png",
-    "/images/feature_quality.png",
-    "/images/feature_natural.png"
+    "/images/about/about_ezwah.png",
+    "/images/about/about_ezwah_2.png",
+    "/images/about/about_ezwah_3.png"
   ];
 
   useEffect(() => {
@@ -109,7 +109,7 @@ const AboutPage = () => {
                   animate={{ opacity: 1, filter: 'brightness(1)', scale: 1 }}
                   exit={{ opacity: 0, filter: 'brightness(2)' }}
                   transition={{ duration: 0.4 }}
-                  style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '20px', display: 'block', position: 'absolute', top: 0, left: 0 }} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', padding: 0, display: 'block', position: 'absolute', top: 0, left: 0 }} 
                 />
               </AnimatePresence>
             </div>

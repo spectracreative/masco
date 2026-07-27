@@ -67,9 +67,9 @@ const Header = () => {
                   return (
                     <Link to={`/products/${encodeURIComponent(cat)}`} key={cat} onClick={() => setMobileMenuOpen(false)} className="mega-menu-item">
                       <div className="mega-menu-img-wrapper">
-                        <img src={bgImg} alt={cat} />
+                        <img src={bgImg} alt={cat} onError={(e) => { e.target.style.display = 'none'; }} />
                       </div>
-                      <span style={{ fontSize: '0.95rem', fontWeight: '500' }}>{cat}</span>
+                      <span style={{ fontSize: '0.95rem', fontWeight: '500', marginTop: '4px' }}>{cat}</span>
                     </Link>
                   );
                 })}

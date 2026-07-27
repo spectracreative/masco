@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, Search, Menu, X } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X, Globe } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { categories } from '../data/products';
 import { useCart } from '../context/CartContext';
+import { useLanguage } from '../context/LanguageContext';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -11,6 +12,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { toggleCart, cartCount } = useCart();
+  const { language, toggleLanguage, t, translateCategory } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,8 +36,16 @@ const Header = () => {
       <div className="container header-container">
         <div className="logo">
           <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-            <img src="/images/logo.png" alt="Baja Logo" />
-            <img src="/images/logo2.png" alt="Ezwah Logo" style={{ filter: 'none' }} />
+            {language === 'ar' ? (
+              // Arabic Ezwah Logo
+              <img src="/images/logo.png" alt="شعار عزوة" style={{ height: scrolled ? '55px' : '75px', filter: 'none' }} />
+            ) : (
+              // English / Dual Ezwah Logo
+              <>
+                <img src="/images/logo.png" alt="Ezwah Arabic Logo" />
+                <img src="/images/logo2.png" alt="Ezwah English Logo" style={{ filter: 'none' }} />
+              </>
+            )}
           </Link>
         </div>
         
@@ -45,16 +55,16 @@ const Header = () => {
         <ul className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
           
           <li className="mobile-menu-header">
-            <img src="/images/logo2.png" alt="Ezwah Logo" style={{ height: '35px' }} />
+            <img src={language === 'ar' ? "/images/logo.png" : "/images/logo2.png"} alt="Ezwah Logo" style={{ height: '35px' }} />
             <button className="icon-btn" onClick={() => setMobileMenuOpen(false)} style={{ color: '#2A1A12' }}>
               <X size={28} />
             </button>
           </li>
 
-          <li><Link to="/" onClick={() => setMobileMenuOpen(false)}>Home</Link></li>
-          <li><Link to="/about" onClick={() => setMobileMenuOpen(false)}>About</Link></li>
+          <li><Link to="/" onClick={() => setMobileMenuOpen(false)}>{t('nav_home')}</Link></li>
+          <li><Link to="/about" onClick={() => setMobileMenuOpen(false)}>{t('nav_about')}</Link></li>
           <li className="dropdown-parent">
-            <Link to="/products" className="dropdown-toggle" onClick={() => setMobileMenuOpen(false)}>Products</Link>
+            <Link to="/products" className="dropdown-toggle" onClick={() => setMobileMenuOpen(false)}>{t('nav_products')}</Link>
             <div className="dropdown-menu mega-menu">
               <div className="mega-menu-grid">
                 {categories.map(cat => {
@@ -69,22 +79,42 @@ const Header = () => {
                       <div className="mega-menu-img-wrapper">
                         <img src={bgImg} alt={cat} onError={(e) => { e.target.style.display = 'none'; }} />
                       </div>
-                      <span style={{ fontSize: '0.95rem', fontWeight: '500', marginTop: '4px' }}>{cat}</span>
+                      <span style={{ fontSize: '0.95rem', fontWeight: '500', marginTop: '4px' }}>{translateCategory(cat)}</span>
                     </Link>
                   );
                 })}
               </div>
             </div>
           </li>
-          <li><Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</Link></li>
+          <li><Link to="/contact" onClick={() => setMobileMenuOpen(false)}>{t('nav_contact')}</Link></li>
+          
+          {/* Mobile Language Switcher */}
+          <li className="mobile-lang-item" style={{ marginTop: '15px' }}>
+            <button onClick={toggleLanguage} className="lang-switch-btn mobile">
+              <Globe size={18} />
+              <span>{language === 'en' ? 'العربية' : 'English'}</span>
+            </button>
+          </li>
         </ul>
         
         <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+          
+          {/* Header Desktop Language Switcher Button */}
+          <button 
+            onClick={toggleLanguage} 
+            className="lang-switch-btn"
+            title={language === 'en' ? 'التحويل إلى العربية' : 'Switch to English'}
+            aria-label="Switch Language"
+          >
+            <Globe size={18} />
+            <span>{language === 'en' ? 'العربية' : 'English'}</span>
+          </button>
+
           {searchOpen ? (
             <form onSubmit={handleSearch} className="search-form" style={{ display: 'flex', alignItems: 'center' }}>
               <input 
                 type="text" 
-                placeholder="Search..." 
+                placeholder={t('nav_search_placeholder')} 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 autoFocus

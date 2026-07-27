@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CartProvider, useCart } from './context/CartContext';
+import { LanguageProvider } from './context/LanguageContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CartSidebar from './components/CartSidebar';
@@ -52,26 +53,28 @@ const ToastNotification = () => {
 
 function App() {
   return (
-    <CartProvider>
-      <Router>
-        <ScrollToTop />
-        <div className="app-container">
-          <Header />
-          <CartSidebar />
-          <ToastNotification />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/products" element={<ProductsPage />} />
-            <Route path="/products/:category" element={<ProductsPage />} />
-            <Route path="/product/:id" element={<ProductDetailsPage />} />
-            <Route path="/search" element={<SearchPage />} />
-          </Routes>
-          <Footer />
-        </div>
-      </Router>
-    </CartProvider>
+    <LanguageProvider>
+      <CartProvider>
+        <Router>
+          <ScrollToTop />
+          <div className="app-container">
+            <Header />
+            <CartSidebar />
+            <ToastNotification />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/products/:category" element={<ProductsPage />} />
+              <Route path="/product/:id" element={<ProductDetailsPage />} />
+              <Route path="/search" element={<SearchPage />} />
+            </Routes>
+            <Footer />
+          </div>
+        </Router>
+      </CartProvider>
+    </LanguageProvider>
   );
 }
 

@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const Features = () => {
   const containerRef = useRef(null);
+  const { t, language } = useLanguage();
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -66,6 +68,8 @@ const Features = () => {
   const nutOpacity = useTransform(scrollYProgress, [0, 0.1, 0.15], [1, 1, 0], { clamp: true });
   const nutDisplay = useTransform(scrollYProgress, [0, 0.14, 0.15], ["block", "block", "none"]);
 
+  const inlineLogoSrc = language === 'ar' ? '/images/logo.png' : '/images/logo2.png';
+
   return (
     <section ref={containerRef} className="cinematic-container" style={{ height: '500vh' }}>
       <div className="cinematic-sticky">
@@ -100,18 +104,18 @@ const Features = () => {
               
               <motion.div initial={{ y: -30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, amount: 0.8 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0 }}>
                 <motion.span className="subtitle" style={{ opacity: introOpacity1, y: introY1, letterSpacing: '0.2em', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
-                  The <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" style={{ height: '1.8em', transform: 'translateY(-2px)' }} /> Promise
+                  {t('features_subtitle')} <img src={inlineLogoSrc} alt="Ezwah" className="ezwah-inline-logo red" style={{ height: '1.8em', transform: 'translateY(-2px)' }} />
                 </motion.span>
               </motion.div>
 
               <motion.div initial={{ y: -30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, amount: 0.8 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}>
                 <motion.h2 style={{ opacity: introOpacity2, y: introY2, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', flexWrap: 'wrap', fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: '#2A1A12', marginBottom: '25px', fontFamily: 'var(--font-main)', lineHeight: 1.2 }}>
-                  Why Choose <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" style={{ height: '1.6em', transform: 'none', margin: 0 }} />
+                  {t('features_title')} <img src={inlineLogoSrc} alt="Ezwah" className="ezwah-inline-logo red" style={{ height: '1.6em', transform: 'none', margin: 0 }} />
                 </motion.h2>
               </motion.div>
 
               <motion.div initial={{ y: -30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, amount: 0.8 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}>
-                <motion.p style={{ opacity: introOpacity3, y: introY3, maxWidth: '600px', margin: '0 auto', fontSize: '1.2rem', color: '#6B5B50', lineHeight: 1.8 }}>We believe in delivering nothing but excellence. Every product that bears the Ezwah name represents our commitment to quality, freshness, and authentic taste.</motion.p>
+                <motion.p style={{ opacity: introOpacity3, y: introY3, maxWidth: '600px', margin: '0 auto', fontSize: '1.2rem', color: '#5A4A40', lineHeight: 1.8 }}>{t('features_desc')}</motion.p>
               </motion.div>
 
             </div>
@@ -125,9 +129,9 @@ const Features = () => {
               <img src="/images/feature_premium.png" alt="Premium Selection" />
             </motion.div>
             <motion.div className="cinematic-content" style={{ x: scene1TxtX }}>
-              <span className="cinematic-label">PREMIUM SELECTION</span>
-              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>Handpicked from<br/>the world's finest farms.</h2>
-              <p className="cinematic-desc">Every nut is carefully selected for exceptional quality, freshness, and taste.</p>
+              <span className="cinematic-label">{t('feat1_label')}</span>
+              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>{t('feat1_title')}</h2>
+              <p className="cinematic-desc">{t('feat1_desc')}</p>
             </motion.div>
           </div>
         </motion.div>
@@ -139,9 +143,9 @@ const Features = () => {
               <img src="/images/feature_natural.png" alt="100% Natural" />
             </motion.div>
             <motion.div className="cinematic-content" style={{ x: scene2TxtX }}>
-              <span className="cinematic-label">100% NATURAL</span>
-              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>Nothing Added.<br/>Nothing Artificial.</h2>
-              <p className="cinematic-desc">Pure, authentic goodness crafted to deliver an unmatched natural taste experience.</p>
+              <span className="cinematic-label">{t('feat2_label')}</span>
+              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>{t('feat2_title')}</h2>
+              <p className="cinematic-desc">{t('feat2_desc')}</p>
             </motion.div>
           </div>
         </motion.div>
@@ -153,9 +157,9 @@ const Features = () => {
               <img src="/images/feature_roasted.png" alt="Freshly Roasted" />
             </motion.div>
             <motion.div className="cinematic-content" style={{ x: scene3TxtX }}>
-              <span className="cinematic-label">FRESHLY ROASTED</span>
-              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>Crafted for<br/>Maximum Flavor.</h2>
-              <p className="cinematic-desc">Roasted in small batches only after your order to preserve freshness and crunch.</p>
+              <span className="cinematic-label">{t('feat3_label')}</span>
+              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>{t('feat3_title')}</h2>
+              <p className="cinematic-desc">{t('feat3_desc')}</p>
             </motion.div>
           </div>
         </motion.div>
@@ -167,9 +171,9 @@ const Features = () => {
               <img src="/images/feature_quality.png" alt="Quality Assured" />
             </motion.div>
             <motion.div className="cinematic-content" style={{ x: scene4TxtX }}>
-              <span className="cinematic-label">QUALITY ASSURED</span>
-              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>Excellence in<br/>Every Pack.</h2>
-              <p className="cinematic-desc">Every batch passes rigorous quality inspections before reaching your table.</p>
+              <span className="cinematic-label">{t('feat4_label')}</span>
+              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>{t('feat4_title')}</h2>
+              <p className="cinematic-desc">{t('feat4_desc')}</p>
             </motion.div>
           </div>
         </motion.div>

@@ -10,6 +10,7 @@
   --border-color: rgba(233, 34, 40, 0.1);
   
   --font-main: 'Inter Tight', sans-serif;
+  --font-ar: 'Readex Pro', 'Tajawal', sans-serif;
   
   --shadow-sm: 0 4px 15px rgba(0,0,0,0.03);
   --shadow-md: 0 10px 30px rgba(233, 34, 40, 0.08);
@@ -36,6 +37,20 @@ body {
   overflow-x: hidden;
 }
 
+/* Arabic Typography & RTL Support */
+html[lang="ar"],
+html[dir="rtl"],
+body.rtl {
+  font-family: var(--font-ar);
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .title-section,
+html[dir="rtl"] .page-header {
+  text-align: center;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -57,6 +72,35 @@ button {
 
 .section {
   padding: clamp(60px, 10vw, 100px) 0;
+}
+
+/* Language Switcher Button */
+.lang-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.lang-switch-btn:hover {
+  background: white;
+  color: var(--primary);
+  border-color: white;
+}
+.lang-switch-btn.mobile {
+  background: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  width: 100%;
+  justify-content: center;
 }
 
 /* Typography */

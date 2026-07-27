@@ -1,18 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 const Footer = () => {
+  const { t, language } = useLanguage();
+
   return (
     <footer className="modern-footer">
       <div className="container">
-        <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '40px', textAlign: 'left' }}>
+        <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '40px' }}>
           
           <div className="footer-brand" style={{ display: 'flex', flexDirection: 'column' }}>
             <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
-              <img src="/images/logo.png" alt="Ezwah Arabic Logo" style={{ height: '60px', filter: 'brightness(0) invert(1)' }} />
-              <img src="/images/logo2.png" alt="Ezwah Logo" style={{ height: '50px' }} />
+              <img src="/images/logo.png" alt="Ezwah Logo" style={{ height: '60px', filter: 'brightness(0) invert(1)' }} />
+              {language !== 'ar' && (
+                <img src="/images/logo2.png" alt="Ezwah English Logo" style={{ height: '50px' }} />
+              )}
             </Link>
-            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '20px' }}><img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo white" /> is the pioneer in making and packing the highest quality nuts, seeds, and dried fruits. A self-made achievement built on passion.</p>
+            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '20px' }}>
+              {t('footer_desc')}
+            </p>
             <div className="social-links" style={{ display: 'flex', gap: '15px' }}>
               <a href="#" style={{ color: 'white', background: 'rgba(255,255,255,0.1)', padding: '10px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px' }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -30,19 +37,19 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 style={{ color: 'white', marginBottom: '20px', fontSize: '1.2rem', fontWeight: '500' }}>Quick Links</h4>
+            <h4 style={{ color: 'white', marginBottom: '20px', fontSize: '1.2rem', fontWeight: '500' }}>{t('footer_quick_links')}</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <li><Link to="/" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>Home</Link></li>
-              <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>About Us</Link></li>
-              <li><Link to="/products" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>Products</Link></li>
-              <li><Link to="/contact" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>Contact</Link></li>
+              <li><Link to="/" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>{t('nav_home')}</Link></li>
+              <li><Link to="/about" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>{t('nav_about')}</Link></li>
+              <li><Link to="/products" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>{t('nav_products')}</Link></li>
+              <li><Link to="/contact" style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>{t('nav_contact')}</Link></li>
             </ul>
           </div>
           
         </div>
         
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo white" /> Trading. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {language === 'ar' ? 'عزوة' : 'Ezwah'}. {t('footer_rights')}</p>
         </div>
       </div>
     </footer>

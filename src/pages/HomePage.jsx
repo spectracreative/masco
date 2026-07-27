@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import Features from '../components/Features';
-import { categories } from '../data/products';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const HomePage = () => {
+  const { t, translateCategory, language } = useLanguage();
+
   return (
     <main>
       <Hero />
@@ -23,9 +25,9 @@ const HomePage = () => {
 
         <div className="container">
           <div className="title-section" style={{ color: 'white', marginBottom: 'clamp(30px, 5vw, 40px)' }}>
-            <span className="subtitle" style={{ color: 'var(--bg-color)' }}>Explore Our Range</span>
-            <h2 style={{ color: 'white' }}>Product Categories</h2>
-            <p style={{ color: '#fdd' }}>Discover our wide selection of premium nuts and seeds, carefully sourced and roasted to perfection.</p>
+            <span className="subtitle" style={{ color: 'var(--bg-color)' }}>{t('categories_range')}</span>
+            <h2 style={{ color: 'white' }}>{t('categories_title')}</h2>
+            <p style={{ color: '#fdd' }}>{t('categories_subtitle')}</p>
           </div>
         </div>
           
@@ -72,7 +74,7 @@ const HomePage = () => {
                   ></div>
                   <div className="category-card-content" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(20px, 4vw, 40px) clamp(15px, 3vw, 30px)', background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%)', width: '100%', height: '100%', position: 'relative', zIndex: 2 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                      <h3 style={{ textShadow: '0 2px 10px rgba(0,0,0,0.9)', margin: 0, color: 'white' }}>{cat.toUpperCase()}</h3>
+                      <h3 style={{ textShadow: '0 2px 10px rgba(0,0,0,0.9)', margin: 0, color: 'white' }}>{translateCategory(cat).toUpperCase()}</h3>
                       <span className="view-link-icon" style={{ 
                         display: 'inline-flex', 
                         alignItems: 'center', 
@@ -84,7 +86,7 @@ const HomePage = () => {
                         color: 'white',
                         transition: 'var(--transition)'
                       }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transform: language === 'ar' ? 'rotate(90deg)' : 'none' }}><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
                       </span>
                     </div>
                   </div>

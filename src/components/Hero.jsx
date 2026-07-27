@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { categories } from '../data/products';
+import { useLanguage } from '../context/LanguageContext';
 
 const Hero = () => {
   const navigate = useNavigate();
+  const { t, translateCategory, language } = useLanguage();
 
   const slides = categories.map((cat) => {
     let name = cat.toLowerCase();
@@ -12,11 +14,15 @@ const Hero = () => {
     else if (cat === "Pumpkin Seed") name = "pumpkin-seed/pumpkin";
     else name = `${name}/${name}`;
 
+    const catAr = translateCategory(cat);
+
     return {
       category: cat,
       image: `/images/categories/${name}.png`,
-      title: `PREMIUM ${cat.toUpperCase()}`,
-      desc: `Taste the absolute best quality ${cat.toLowerCase()} hand-selected for you.`
+      title: language === 'ar' ? `${catAr} فاخر` : `PREMIUM ${cat.toUpperCase()}`,
+      desc: language === 'ar' 
+        ? `استمتع بأجود أنواع ${catAr} المحمص بعناية فائقة للجودة والطعوم الأصيلة.`
+        : `Taste the absolute best quality ${cat.toLowerCase()} hand-selected for you.`
     };
   });
 
@@ -72,9 +78,9 @@ const Hero = () => {
             <motion.h1 
               className="hero-slider-title"
               variants={{
-                hidden: { opacity: 0, x: -50 },
+                hidden: { opacity: 0, x: language === 'ar' ? 50 : -50 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
-                exit: { opacity: 0, x: 50, transition: { duration: 0.4 } }
+                exit: { opacity: 0, x: language === 'ar' ? -50 : 50, transition: { duration: 0.4 } }
               }}
             >
               {slides[currentIndex].title}
@@ -82,9 +88,9 @@ const Hero = () => {
             <motion.p 
               className="hero-slider-desc"
               variants={{
-                hidden: { opacity: 0, x: -50 },
+                hidden: { opacity: 0, x: language === 'ar' ? 50 : -50 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
-                exit: { opacity: 0, x: 50, transition: { duration: 0.4 } }
+                exit: { opacity: 0, x: language === 'ar' ? -50 : 50, transition: { duration: 0.4 } }
               }}
             >
               {slides[currentIndex].desc}
@@ -93,12 +99,12 @@ const Hero = () => {
               className="hero-slider-btn btn"
               onClick={() => navigate(`/products/${encodeURIComponent(slides[currentIndex].category)}`)}
               variants={{
-                hidden: { opacity: 0, x: -50 },
+                hidden: { opacity: 0, x: language === 'ar' ? 50 : -50 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
-                exit: { opacity: 0, x: 50, transition: { duration: 0.4 } }
+                exit: { opacity: 0, x: language === 'ar' ? -50 : 50, transition: { duration: 0.4 } }
               }}
             >
-              View {slides[currentIndex].category}
+              {language === 'ar' ? `استكشف ${translateCategory(slides[currentIndex].category)}` : `View ${slides[currentIndex].category}`}
             </motion.button>
           </motion.div>
         </AnimatePresence>

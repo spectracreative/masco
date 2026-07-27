@@ -1,13 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const ContactPage = () => {
+  const { t, language } = useLanguage();
+
   return (
     <main className="page-wrapper">
       <div className="page-header" style={{ background: 'var(--primary)', color: 'white', padding: '140px 0 60px 0', textAlign: 'center' }}>
         <div className="container">
-          <h1 style={{ fontSize: '3.5rem', marginBottom: '15px' }}>Contact Us</h1>
-          <p style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}>We'd love to hear from you.</p>
+          <h1 style={{ fontSize: '3.5rem', marginBottom: '15px' }}>{t('nav_contact')}</h1>
+          <p style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}>{t('contact_hero_sub')}</p>
         </div>
       </div>
 
@@ -30,24 +33,24 @@ const ContactPage = () => {
                   <path d="M14 13h5"/>
                   <path d="M14 16h3"/>
                 </svg>
-                <h2 style={{ fontSize: '2rem', margin: 0, color: '#2A1A12' }}>Get in Touch</h2>
+                <h2 style={{ fontSize: '2rem', margin: 0, color: '#2A1A12' }}>{t('contact_info_heading')}</h2>
               </div>
-              <p style={{ color: '#555', marginBottom: '30px', lineHeight: '1.6', fontSize: '1.1rem' }}>Have questions about our products or want to discuss a partnership? We're here to help.</p>
+              <p style={{ color: '#555', marginBottom: '30px', lineHeight: '1.6', fontSize: '1.1rem' }}>{t('contact_hero_sub')}</p>
               
               <div style={{ background: 'white', borderRadius: '24px', padding: '40px', boxShadow: 'var(--shadow-sm)', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div>
-                  <h4 style={{ fontWeight: '600', marginBottom: '5px' }}>Email Us</h4>
+                  <h4 style={{ fontWeight: '600', marginBottom: '5px' }}>{t('email_label')}</h4>
                   <p style={{ color: '#555' }}>mascounitedksa@gmail.com</p>
                 </div>
                 <div>
-                  <h4 style={{ fontWeight: '600', marginBottom: '5px' }}>Call Us</h4>
-                  <p style={{ color: '#555' }}>+966 506 85 5411</p>
+                  <h4 style={{ fontWeight: '600', marginBottom: '5px' }}>{t('phone_label')}</h4>
+                  <p style={{ color: '#555', direction: 'ltr', textAlign: language === 'ar' ? 'right' : 'left' }}>+966 506 85 5411</p>
                 </div>
                 <div>
-                  <h4 style={{ fontWeight: '600', marginBottom: '10px' }}>Visit Us (Headquarters)</h4>
+                  <h4 style={{ fontWeight: '600', marginBottom: '10px' }}>{t('address_label')}</h4>
                   <p style={{ color: '#555', margin: '0 0 5px 0' }}>Building No. 4045, Street No. 40</p>
                   <p style={{ color: '#555', margin: '0 0 5px 0' }}>Al Misfat Dist. (Secondary No. 8211)</p>
-                  <p style={{ color: '#555', margin: '0 0 5px 0' }}>Riyadh 14528, Kingdom of Saudi Arabia</p>
+                  <p style={{ color: '#555', margin: '0 0 5px 0' }}>{t('address_val')}</p>
                   <p style={{ color: '#888', margin: '5px 0 0 0', fontSize: '0.9rem' }}>Short Address: RMFA4045</p>
                 </div>
               </div>
@@ -61,28 +64,22 @@ const ContactPage = () => {
               style={{ background: 'white', borderRadius: '24px', padding: '50px', boxShadow: 'var(--shadow-sm)' }}
             >
               <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <div className="contact-form-grid">
-                  <div>
-                    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>First Name</label>
-                    <input type="text" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
-                  </div>
-                  <div>
-                    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Last Name</label>
-                    <input type="text" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
-                  </div>
+                <div>
+                  <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>{t('form_name')}</label>
+                  <input type="text" placeholder={t('form_name')} style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
                 </div>
                 
                 <div>
-                  <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Email Address</label>
-                  <input type="email" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
+                  <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>{t('form_email')}</label>
+                  <input type="email" placeholder={t('form_email')} style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none' }} />
                 </div>
                 
                 <div>
-                  <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>Message</label>
-                  <textarea rows="5" placeholder="How can we help you?" style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none', resize: 'vertical' }}></textarea>
+                  <label style={{ display: 'block', marginBottom: '8px', fontWeight: '500' }}>{t('form_message')}</label>
+                  <textarea rows="5" placeholder={t('form_message')} style={{ width: '100%', padding: '12px 15px', borderRadius: '8px', border: '1px solid #ddd', outline: 'none', resize: 'vertical' }}></textarea>
                 </div>
                 
-                <button type="button" className="btn" style={{ alignSelf: 'flex-start', padding: '15px 40px', fontSize: '1.1rem' }}>Send Message</button>
+                <button type="button" className="btn" style={{ alignSelf: 'flex-start', padding: '15px 40px', fontSize: '1.1rem' }}>{t('form_submit')}</button>
               </form>
             </motion.div>
           </div>

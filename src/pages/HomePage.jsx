@@ -44,7 +44,7 @@ const HomePage = () => {
             if (cat === "Sunflower Seed") name = "sunflower-seed/sunflower";
             else if (cat === "Pumpkin Seed") name = "pumpkin-seed/pumpkin";
             else name = `${name}/${name}`;
-            const bgImg = `/images/categories/${name}.png`;
+            const bgImg = `/images/categories/${name}.jpg`;
 
             return (
               <Link to={`/products/${encodeURIComponent(cat)}`} key={cat} style={{ textDecoration: 'none' }}>

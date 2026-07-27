@@ -115,9 +115,9 @@ const Features = () => {
               <motion.div initial={{ y: -30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true, amount: 0.8 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}>
                 <motion.h2 style={{ opacity: introOpacity2, y: introY2, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '16px', flexWrap: 'nowrap', fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: '#2A1A12', marginBottom: '25px', fontFamily: 'var(--font-main)', lineHeight: 1.2 }}>
                   {language === 'ar' ? (
-                    <>لماذا تختار <img src="/images/logo.png" alt="عزوة" className="ezwah-inline-logo red" style={{ height: '1.2em', margin: 0 }} /></>
+                    <>لماذا تختار <img src="/images/logo.png" alt="عزوة" className="ezwah-inline-logo red" style={{ height: '1.7em', margin: 0, transform: 'translateY(-2px)' }} /></>
                   ) : (
-                    <>Why Choose <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" style={{ height: '1.2em', margin: 0 }} /></>
+                    <>Why Choose <img src="/images/logo2.png" alt="Ezwah" className="ezwah-inline-logo red" style={{ height: '1.7em', margin: 0, transform: 'translateY(-2px)' }} /></>
                   )}
                 </motion.h2>
               </motion.div>

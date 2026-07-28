@@ -761,21 +761,25 @@
 }
 
 .cinematic-subtitle {
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .cinematic-intro-heading {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
-  font-size: clamp(1.4rem, 5.2vw, 4.5rem);
+  font-size: clamp(2.2rem, 6vw, 4.8rem);
+  font-weight: 800;
   color: #2A1A12;
   margin-bottom: 25px;
   font-family: var(--font-main);
@@ -1205,13 +1209,13 @@
     padding-top: 70px !important;
   }
   .cinematic-subtitle {
-    font-size: 0.85rem;
-    gap: 6px;
+    font-size: clamp(0.95rem, 3.5vw, 1.15rem);
+    gap: 8px;
   }
   .cinematic-intro-heading {
-    font-size: clamp(1.4rem, 5.2vw, 2.5rem);
-    gap: 8px;
-    margin-bottom: 15px;
+    font-size: clamp(1.8rem, 6.5vw, 2.8rem);
+    gap: 10px;
+    margin-bottom: 18px;
   }
 }
 

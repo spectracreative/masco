@@ -744,12 +744,12 @@
 }
 
 .ezwah-inline-logo {
-  height: 2.1em;
+  height: 1.6em;
   width: auto;
   vertical-align: middle;
-  margin: 0 0.1em;
+  margin: 0 0.15em;
   display: inline-block;
-  transform: translateY(-0.18em);
+  transform: translateY(-0.1em);
 }
 
 .ezwah-inline-logo.red {
@@ -758,6 +758,29 @@
 
 .ezwah-inline-logo.white {
   filter: brightness(0) invert(1);
+}
+
+.cinematic-subtitle {
+  letter-spacing: 0.2em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cinematic-intro-heading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: clamp(1.4rem, 5.2vw, 4.5rem);
+  color: #2A1A12;
+  margin-bottom: 25px;
+  font-family: var(--font-main);
+  line-height: 1.2;
+  text-align: center;
 }
 
 
@@ -1170,7 +1193,25 @@
   }
   .cinematic-image-wrapper {
     flex: 0 0 auto;
-    max-width: 50%;
+    max-width: 70%;
+  }
+  .cinematic-heading {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .cinematic-scene.intro .cinematic-scene-inner {
+    padding-top: 70px !important;
+  }
+  .cinematic-subtitle {
+    font-size: 0.85rem;
+    gap: 6px;
+  }
+  .cinematic-intro-heading {
+    font-size: clamp(1.4rem, 5.2vw, 2.5rem);
+    gap: 8px;
+    margin-bottom: 15px;
   }
 }
 

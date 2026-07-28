@@ -39,6 +39,7 @@ const Header = () => {
             <img 
               src="/images/logo.png" 
               alt="Ezwah Arabic Logo" 
+              className="header-logo-ar"
               style={{ 
                 height: scrolled ? '50px' : '65px', 
                 filter: 'brightness(0) invert(1)',
@@ -48,6 +49,7 @@ const Header = () => {
             <img 
               src="/images/logo2.png" 
               alt="Ezwah English Logo" 
+              className="header-logo-en"
               style={{ 
                 height: scrolled ? '40px' : '50px', 
                 filter: 'none',

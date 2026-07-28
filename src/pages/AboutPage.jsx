@@ -48,7 +48,7 @@ const AboutPage = () => {
     <main className="page-wrapper">
       <div className="page-header" style={{ background: 'var(--primary)', color: 'white', padding: '140px 0 60px 0', textAlign: 'center' }}>
         <div className="container">
-          <h1 style={{ fontSize: '3.5rem', marginBottom: '15px' }}>
+          <h1 style={{ fontSize: 'clamp(1.8rem, 5vw, 3.5rem)', marginBottom: '15px' }}>
             {t('about_hero_title')} <img src={inlineLogoSrc} alt="Ezwah" className="ezwah-inline-logo white" style={{ filter: language === 'ar' ? 'brightness(0) invert(1)' : 'none' }} />
           </h1>
           <p style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}>{t('about_hero_sub')}</p>

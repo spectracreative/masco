@@ -46,6 +46,12 @@ body.rtl {
   text-align: right;
 }
 
+html[lang="ar"] *,
+html[dir="rtl"] *,
+body.rtl * {
+  letter-spacing: normal !important;
+}
+
 html[dir="rtl"] .title-section,
 html[dir="rtl"] .page-header {
   text-align: center;

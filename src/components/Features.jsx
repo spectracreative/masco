@@ -138,7 +138,7 @@ const Features = () => {
             </motion.div>
             <motion.div className="cinematic-content" style={{ x: scene1TxtX }}>
               <span className="cinematic-label">{t('feat1_label')}</span>
-              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>{t('feat1_title')}</h2>
+              <h2 className="cinematic-heading">{t('feat1_title')}</h2>
               <p className="cinematic-desc">{t('feat1_desc')}</p>
             </motion.div>
           </div>
@@ -152,7 +152,7 @@ const Features = () => {
             </motion.div>
             <motion.div className="cinematic-content" style={{ x: scene2TxtX }}>
               <span className="cinematic-label">{t('feat2_label')}</span>
-              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>{t('feat2_title')}</h2>
+              <h2 className="cinematic-heading">{t('feat2_title')}</h2>
               <p className="cinematic-desc">{t('feat2_desc')}</p>
             </motion.div>
           </div>
@@ -166,7 +166,7 @@ const Features = () => {
             </motion.div>
             <motion.div className="cinematic-content" style={{ x: scene3TxtX }}>
               <span className="cinematic-label">{t('feat3_label')}</span>
-              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>{t('feat3_title')}</h2>
+              <h2 className="cinematic-heading">{t('feat3_title')}</h2>
               <p className="cinematic-desc">{t('feat3_desc')}</p>
             </motion.div>
           </div>
@@ -180,7 +180,7 @@ const Features = () => {
             </motion.div>
             <motion.div className="cinematic-content" style={{ x: scene4TxtX }}>
               <span className="cinematic-label">{t('feat4_label')}</span>
-              <h2 className="cinematic-heading" style={{ fontFamily: 'var(--font-main)' }}>{t('feat4_title')}</h2>
+              <h2 className="cinematic-heading">{t('feat4_title')}</h2>
               <p className="cinematic-desc">{t('feat4_desc')}</p>
             </motion.div>
           </div>

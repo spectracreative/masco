@@ -45,7 +45,7 @@ const AboutPage = () => {
   const inlineLogoSrc = language === 'ar' ? '/images/logo.png' : '/images/logo2.png';
 
   return (
-    <main className="page-wrapper">
+    <main className="page-wrapper" id="main-content">
       <div className="page-header" style={{ background: 'var(--primary)', color: 'white', padding: '140px 0 60px 0', textAlign: 'center' }}>
         <div className="container">
           <h1 style={{ fontSize: 'clamp(1.8rem, 5vw, 3.5rem)', marginBottom: '15px' }}>

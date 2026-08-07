@@ -28,7 +28,7 @@ const ProductDetailsPage = () => {
     .slice(0, 3); // show up to 3 related
 
   return (
-    <main className="page-wrapper" style={{ padding: '140px 0 60px 0', background: 'white' }}>
+    <main className="page-wrapper" id="main-content" style={{ padding: '140px 0 60px 0', background: 'white' }}>
       <div className="container">
         <nav aria-label="breadcrumb" style={{ marginBottom: '30px', fontSize: '0.9rem' }}>
           <ol style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', gap: '8px', color: '#777' }}>
@@ -48,12 +48,21 @@ const ProductDetailsPage = () => {
           </div>
           
           <div className="product-details-info" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <h1 className="product-title-medium" style={{ fontSize: '2.5rem', marginBottom: '10px' }}>{product.name}</h1>
+            <h1 className="product-title-medium" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', marginBottom: '10px' }}>{product.name}</h1>
             <div className="product-weight-thin" style={{ fontSize: '1.2rem', color: '#666', marginBottom: '20px' }}>{t('weight_label')} {product.weight}</div>
             
             <p style={{ fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '30px', color: '#444' }}>
               {product.description}
             </p>
+
+            <button 
+              className="btn btn-primary" 
+              onClick={() => addToCart(rawProduct)}
+              style={{ alignSelf: 'flex-start', padding: '14px 36px', minHeight: '44px', display: 'inline-flex', alignItems: 'center', gap: '10px' }}
+            >
+              <ShoppingBag size={20} />
+              <span>{t('add_to_cart')}</span>
+            </button>
           </div>
         </div>
 

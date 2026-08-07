@@ -1,18 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CartProvider, useCart } from './context/CartContext';
 import { LanguageProvider } from './context/LanguageContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CartSidebar from './components/CartSidebar';
-import HomePage from './pages/HomePage';
-import ProductsPage from './pages/ProductsPage';
-import ProductDetailsPage from './pages/ProductDetailsPage';
-import SearchPage from './pages/SearchPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
 import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
+
+// Lazy loading route components for optimal performance
+const HomePage = lazy(() => import('./pages/HomePage'));
+const ProductsPage = lazy(() => import('./pages/ProductsPage'));
+const ProductDetailsPage = lazy(() => import('./pages/ProductDetailsPage'));
+const SearchPage = lazy(() => import('./pages/SearchPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+
+const PageLoader = () => (
+  <div className="page-spinner-container" aria-label="Loading page">
+    <div className="page-spinner"></div>
+  </div>
+);
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -31,6 +39,8 @@ const ToastNotification = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
+          role="status"
+          aria-live="polite"
           style={{
             position: 'fixed',
             bottom: '30px',
@@ -61,15 +71,17 @@ function App() {
             <Header />
             <CartSidebar />
             <ToastNotification />
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/products" element={<ProductsPage />} />
-              <Route path="/products/:category" element={<ProductsPage />} />
-              <Route path="/product/:id" element={<ProductDetailsPage />} />
-              <Route path="/search" element={<SearchPage />} />
-            </Routes>
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/products/:category" element={<ProductsPage />} />
+                <Route path="/product/:id" element={<ProductDetailsPage />} />
+                <Route path="/search" element={<SearchPage />} />
+              </Routes>
+            </Suspense>
             <Footer />
           </div>
         </Router>

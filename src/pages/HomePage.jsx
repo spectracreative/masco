@@ -118,7 +118,7 @@ const HomePage = () => {
   const { t, translateCategory, language } = useLanguage();
 
   return (
-    <main>
+    <main id="main-content">
       <Hero />
       <Features />
       

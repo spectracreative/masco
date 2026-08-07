@@ -24,7 +24,7 @@ const ProductsPage = () => {
     : `${t('category_products_subtitle')} ${translateCategory(displayCategory)}`;
 
   return (
-    <main className="page-wrapper">
+    <main className="page-wrapper" id="main-content">
       <div className="page-header" style={{ background: 'var(--primary)', color: 'white', padding: '140px 0 60px 0', textAlign: 'center' }}>
         <div className="container">
           <h1 style={{ fontSize: '3rem', marginBottom: '10px' }}>{headerTitle}</h1>

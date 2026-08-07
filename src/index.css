@@ -252,9 +252,18 @@ p {
 }
 
 /* Active Nav Link Indicator */
-.active-nav-link {
-  color: var(--primary) !important;
+.nav-links a.active-nav-link {
+  color: #ffffff !important;
   font-weight: 700 !important;
+  opacity: 1 !important;
+}
+.nav-links a.active-nav-link::after {
+  width: 100% !important;
+  background: #ffffff !important;
+}
+
+.nav-links.mobile-open a.active-nav-link {
+  color: var(--primary) !important;
 }
 
 /* Touch Target Optimization */

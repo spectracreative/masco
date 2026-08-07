@@ -45,6 +45,8 @@ export const translations = {
     categories_title: "Product Categories",
     categories_subtitle: "Discover our wide selection of premium nuts and seeds, carefully sourced and roasted to perfection.",
     view_category: "View Products",
+    discover_true_quality: "Discover True Quality",
+    view_all_products_cta: "VIEW ALL PRODUCTS →",
 
     // Products Page & Cards
     all_products_title: "All Products",
@@ -162,6 +164,8 @@ export const translations = {
     categories_title: "أقسام المنتجات",
     categories_subtitle: "اكتشف تشكيلتنا الواسعة من المكسرات والبذور الفاخرة المحمصة بإتقان.",
     view_category: "عرض المنتجات",
+    discover_true_quality: "اكتشف الجودة الحقيقية",
+    view_all_products_cta: "عرض جميع المنتجات ←",
 
     // Products Page & Cards
     all_products_title: "جميع المنتجات",

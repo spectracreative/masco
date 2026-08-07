@@ -7,7 +7,30 @@ const Footer = () => {
 
   return (
     <footer className="modern-footer">
-      <div className="container">
+      {/* Clearly Visible Brand Logo Background Overlay */}
+      <div 
+        className="footer-logo-watermark" 
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: '50%',
+          right: language === 'ar' ? 'auto' : '-2%',
+          left: language === 'ar' ? '-2%' : 'auto',
+          transform: 'translateY(-50%)',
+          width: 'clamp(300px, 45vw, 600px)',
+          height: 'clamp(300px, 45vw, 600px)',
+          backgroundImage: 'url(/images/logo.png)',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: language === 'ar' ? 'center left' : 'center right',
+          opacity: 0.25,
+          filter: 'brightness(0) invert(1)',
+          pointerEvents: 'none',
+          zIndex: 0
+        }}
+      />
+
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '40px' }}>
           
           <div className="footer-brand" style={{ display: 'flex', flexDirection: 'column' }}>
